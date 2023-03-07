@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2946449095094932637}
+  - component: {fileID: -6771109773011174625}
+  - component: {fileID: 2348992189655270376}
   m_Layer: 0
   m_Name: Cowboy
   m_TagString: Untagged
@@ -34,6 +36,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &-6771109773011174625
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321140804399635355}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.46133044, y: 0.19553246}
+      - {x: 0.4142694, y: 0.27536792}
+      - {x: 0.43187675, y: 0.29551297}
+      - {x: 0.6124641, y: 0.36938357}
+      - {x: 0.77850175, y: 0.46030825}
+      - {x: 0.8333218, y: 0.5392885}
+      - {x: 0.8312141, y: 0.5925745}
+      - {x: 0.81125844, y: 0.62477297}
+      - {x: 0.7786696, y: 0.6409382}
+      - {x: 0.74146724, y: 0.65894896}
+      - {x: 0.70656997, y: 0.6561917}
+      - {x: 0.69463015, y: 0.6293286}
+      - {x: 0.508438, y: 0.4906489}
+      - {x: 0.47029346, y: 0.5091}
+      - {x: 0.44970408, y: 0.5342908}
+      - {x: 0.4245347, y: 0.55009556}
+      - {x: 0.34176594, y: 0.80378705}
+      - {x: 0.30349842, y: 0.90013593}
+      - {x: 0.27156362, y: 0.93833447}
+      - {x: 0.22993423, y: 0.94881254}
+      - {x: 0.16506308, y: 0.9087603}
+      - {x: 0.08867846, y: 0.8961252}
+      - {x: 0.0008206107, y: 0.89119434}
+      - {x: -0.13616666, y: 0.9032776}
+      - {x: -0.2312778, y: 0.9518412}
+      - {x: -0.28014198, y: 0.9308285}
+      - {x: -0.32883087, y: 0.84981585}
+      - {x: -0.4371546, y: 0.5455109}
+      - {x: -0.4513473, y: 0.49754205}
+      - {x: -0.52288467, y: 0.48904312}
+      - {x: -0.5554533, y: 0.52118695}
+      - {x: -0.7186936, y: 0.66164947}
+      - {x: -0.77055687, y: 0.6459875}
+      - {x: -0.8139196, y: 0.6309748}
+      - {x: -0.8464277, y: 0.5752265}
+      - {x: -0.8161003, y: 0.51132786}
+      - {x: -0.71872175, y: 0.4148346}
+      - {x: -0.4105412, y: 0.27828687}
+      - {x: -0.45453566, y: 0.21495351}
+      - {x: -0.48809797, y: 0.12934093}
+      - {x: -0.49712068, y: 0.07323173}
+      - {x: -1.0044744, y: 0.06594737}
+      - {x: -1.0004381, y: -0.06820588}
+      - {x: -0.49488577, y: -0.067099646}
+      - {x: -0.47987548, y: -0.15755585}
+      - {x: -0.43667528, y: -0.25796947}
+      - {x: -0.29810736, y: -0.3993918}
+      - {x: -0.20157671, y: -0.46002108}
+      - {x: -0.08558884, y: -0.4920133}
+      - {x: 0.061171994, y: -0.49626788}
+      - {x: 0.1702681, y: -0.46804208}
+      - {x: 0.27179947, y: -0.41994518}
+      - {x: 0.35902146, y: -0.34578344}
+      - {x: 0.45077765, y: -0.20760149}
+      - {x: 0.4936214, y: -0.06433967}
+      - {x: 0.49656284, y: 0.067492135}
+      - {x: 0.4692922, y: 0.16464381}
+--- !u!114 &2348992189655270376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321140804399635355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ab9303eae1a5244bccf1cec7ecffc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sleepingEffect: {fileID: 0}
+  moveSpeed: 5
 --- !u!1 &2032755819031700178
 GameObject:
   m_ObjectHideFlags: 0
