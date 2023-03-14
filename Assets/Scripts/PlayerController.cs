@@ -2,27 +2,48 @@ using Mono.Cecil;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController SelectedPlayer; // static reference to the currently selected player
     Tilemap mountainTilemap; // reference to the "Mountain" tilemap
-    ParticleSystem sleepingEffect; // reference to the "SleepingEffect" particle system
     public float moveSpeed = 5f; // player's movement speed
+
+    private Transform sleepingEffect;// reference to the "SleepingEffect" particle system
+    private Transform Canvas;
+    private Button yesOption,noOption;
 
     private bool isSleeping = true; // flag to indicate if the player is sleeping
     private Vector3 targetPosition; // position where the player is moving to
+    //public GameObject popUp;
 
     void Start()
     {
         // find the Mountain GameObject and Sleeping Effect GameObject by name
         GameObject mountainGameObject = GameObject.Find("Mountain");
-        GameObject sleepingEffectGameObject = GameObject.Find("SleepingEffect");
-
-        // get the Tilemap component from the Mountain GameObject
         // get the ParticleSystem from the Sleeping Effect GameObject
+        sleepingEffect = transform.Find("SleepingEffect");
+        // get canvas from Player gameObject
+        Canvas = transform.Find("Canvas");
+        // get Button component from Canvas
+        yesOption = Canvas.gameObject.transform.Find("Yes").GetComponent<Button>();
+        noOption = Canvas.gameObject.transform.Find("No").GetComponent<Button>();
+        // get the Tilemap component from the Mountain GameObject
         mountainTilemap = mountainGameObject.GetComponent<Tilemap>();
-        sleepingEffect = sleepingEffectGameObject.GetComponent<ParticleSystem>();
+    }
+
+    public void clickYes()
+    {
+        Time.timeScale = 1;
+        isSleeping = false;
+        Canvas.gameObject.SetActive(false);
+        sleepingEffect.gameObject.GetComponent<ParticleSystem>().Stop();
+    }
+    public void clickNo()
+    {
+        Time.timeScale = 1;
+        Canvas.gameObject.SetActive(false);
     }
 
     void Update()
@@ -38,12 +59,13 @@ public class PlayerController : MonoBehaviour
                 // check if the click is on the player
                 if (GetComponent<Collider2D>().OverlapPoint(mouseWorldPosition))
                 {
+                    //Pause Game
+                    Time.timeScale = 0;
                     // wake up the player
-                    isSleeping = false;
-                    sleepingEffect.Stop();
-
+                    Canvas.gameObject.SetActive(true);
+                    yesOption.onClick.AddListener(clickYes);
+                    noOption.onClick.AddListener(clickNo);
                 }
-
             }
         }
         else // the player is awake and can move
@@ -81,6 +103,10 @@ public class PlayerController : MonoBehaviour
             if (SelectedPlayer == this)
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
+    }
+    private void Awake()
+    {
+
     }
 
     // deselect the player
