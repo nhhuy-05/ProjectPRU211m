@@ -3005,54 +3005,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &383430665
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 383430667}
-  - component: {fileID: 383430666}
-  m_Layer: 0
-  m_Name: GameController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &383430666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383430665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a4908587611f0249b2419f41d0a2d59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  archerPrefab: {fileID: 7429250907081201748, guid: 6ebaee20c61731e41b62a74a8e272b9b, type: 3}
-  cowboyPrefab: {fileID: 321140804399635355, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
-  wizardPrefab: {fileID: 2208419433552732193, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
-  tankPrefab: {fileID: 6998295150202007367, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
---- !u!4 &383430667
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 383430665}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &663255420
 GameObject:
   m_ObjectHideFlags: 0
@@ -33176,6 +33128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 715748714}
   - component: {fileID: 715748713}
+  - component: {fileID: 715748715}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -33213,6 +33166,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &715748715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715748712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61094e70de882c4d824793e5b013d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  archerPrefab: {fileID: 7429250907081201748, guid: 6ebaee20c61731e41b62a74a8e272b9b, type: 3}
+  cowboyPrefab: {fileID: 321140804399635355, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
+  wizardPrefab: {fileID: 2208419433552732193, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
+  tankPrefab: {fileID: 6998295150202007367, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
 --- !u!1 &1971656637
 GameObject:
   m_ObjectHideFlags: 0
@@ -82675,5 +82644,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
