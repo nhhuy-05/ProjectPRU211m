@@ -33163,8 +33163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minZoomLevel: 1
-  zoomSpeed: 20
-  panSpeed: 50
+  zoomSpeed: 1
+  panSpeed: 0.1
   borderSize: 10
 --- !u!1 &715748712
 GameObject:
