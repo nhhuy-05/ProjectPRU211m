@@ -15,6 +15,9 @@ public class PanningAndZooming : MonoBehaviour
     private float bottomBoundary;
     private float maxZoomLevel;
 
+    private Vector2 touchStartPos;
+    private float prevZoomDelta;
+
     void Start()
     {
         // Calculate the map boundaries
@@ -32,34 +35,55 @@ public class PanningAndZooming : MonoBehaviour
     void Update()
     {
         // Handle zooming
-        float zoomInput = Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
-        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - zoomInput, minZoomLevel, maxZoomLevel);
+        float zoomDelta = 0f;
+        if (Input.touchCount == 2)
+        {
+            Vector2 touch1 = Input.GetTouch(0).position;
+            Vector2 touch2 = Input.GetTouch(1).position;
+            float distance = Vector2.Distance(touch1, touch2);
+            float prevDistance = distance - prevZoomDelta;
+            zoomDelta = prevDistance - distance;
+            prevZoomDelta = distance;
+        }
+        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize + zoomDelta * zoomSpeed, minZoomLevel, maxZoomLevel);
 
         // Handle panning
-        float panInputX = Input.GetAxis("Horizontal") * panSpeed;
-        float panInputY = Input.GetAxis("Vertical") * panSpeed;
-        Vector3 cameraPos = transform.position;
-        float cameraHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
-
-        if (cameraPos.x + cameraHalfWidth > rightBoundary)
+        if (Input.touchCount == 1)
         {
-            cameraPos.x = rightBoundary - cameraHalfWidth;
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                touchStartPos = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Moved)
+            {
+                Vector2 delta = touch.position - touchStartPos;
+                Vector3 cameraPos = transform.position;
+                float cameraHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
+                if (cameraPos.x + cameraHalfWidth > rightBoundary)
+                {
+                    cameraPos.x = rightBoundary - cameraHalfWidth;
+                }
+                else if (cameraPos.x - cameraHalfWidth < leftBoundary)
+                {
+                    cameraPos.x = leftBoundary + cameraHalfWidth;
+                }
+                if (cameraPos.y + Camera.main.orthographicSize > topBoundary)
+                {
+                    cameraPos.y = topBoundary - Camera.main.orthographicSize;
+                }
+                else if (cameraPos.y - Camera.main.orthographicSize < bottomBoundary)
+                {
+                    cameraPos.y = bottomBoundary + Camera.main.orthographicSize;
+                }
+                cameraPos -= new Vector3(delta.x, delta.y, 0) * Time.deltaTime * panSpeed;
+                transform.position = cameraPos;
+            }
         }
-        else if (cameraPos.x - cameraHalfWidth < leftBoundary)
+        else
         {
-            cameraPos.x = leftBoundary + cameraHalfWidth;
+            prevZoomDelta = 0f;
         }
-
-        if (cameraPos.y + Camera.main.orthographicSize > topBoundary)
-        {
-            cameraPos.y = topBoundary - Camera.main.orthographicSize;
-        }
-        else if (cameraPos.y - Camera.main.orthographicSize < bottomBoundary)
-        {
-            cameraPos.y = bottomBoundary + Camera.main.orthographicSize;
-        }
-
-        cameraPos += new Vector3(panInputX, panInputY, 0) * Time.deltaTime;
-        transform.position = cameraPos;
     }
 }
+

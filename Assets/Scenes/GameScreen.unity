@@ -33385,8 +33385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minZoomLevel: 1
-  zoomSpeed: 20
-  panSpeed: 50
+  zoomSpeed: 1
+  panSpeed: 0.1
   borderSize: 10
 --- !u!1 &715748712
 GameObject:
@@ -34269,6 +34269,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269340356}
   m_CullTransparentMesh: 1
+--- !u!1 &1955404203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1955404205}
+  - component: {fileID: 1955404204}
+  m_Layer: 0
+  m_Name: EnemyController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1955404204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955404203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8fa21c25418be4f9c400d71f69428d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossPrefab: {fileID: 4483724069128155163, guid: 06cffef9133992f4bab707fdd78a5b15, type: 3}
+  eyesPrefab: {fileID: 3714496528426503049, guid: a04c0a1d99712b54b9b9a23dafb8e8ef, type: 3}
+  goblinPrefab: {fileID: 3527214733459390005, guid: b07b4af1525ccd24d80d9d1e1d468884, type: 3}
+  mushroomPrefab: {fileID: 5615351709504868984, guid: ce789479957da3e41a2f34a26a804b6f, type: 3}
+  skeletonPrefab: {fileID: 1269541528396803840, guid: bfb6e83e58261044e87836c36971fe7b, type: 3}
+  timeSpawn: 1
+  spawnRateReduction: 0.9
+--- !u!4 &1955404205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955404203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.036694, y: -4.5974746, z: 0.8421524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1971656637
 GameObject:
   m_ObjectHideFlags: 0

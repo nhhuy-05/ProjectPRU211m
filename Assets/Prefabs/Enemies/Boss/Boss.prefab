@@ -223,7 +223,7 @@ MonoBehaviour:
   - {fileID: 3408174060711294523, guid: bf70a130a373353418993e90225e98f2, type: 3}
   - {fileID: 123147093556507183, guid: a8d744c464ec9af45a1e037e19020861, type: 3}
   - {fileID: 1746788172114533248, guid: 7a6ae7963040a8844aa430d7c0c6121b, type: 3}
-  moveUnitsPerSecond: 5
+  moveUnitsPerSecond: 1
 --- !u!114 &1887419882680459714
 MonoBehaviour:
   m_ObjectHideFlags: 0

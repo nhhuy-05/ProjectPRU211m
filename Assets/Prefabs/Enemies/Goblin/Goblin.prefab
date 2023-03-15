@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 3527214733459390003}
   - component: {fileID: 3527214733459390004}
   - component: {fileID: -6199839752302513135}
+  - component: {fileID: -9131193352319292278}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -191,6 +192,25 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 6295123028382295327}
+--- !u!114 &-9131193352319292278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527214733459390005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6fcfd45ce16dd4b9f04764a900de6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paths:
+  - {fileID: 4065134106321098446, guid: 799fec76643e8364fadc2f6e609cf0b1, type: 3}
+  - {fileID: 1610528833445446531, guid: b324f0d8de2b5e7428b748d1f3527e22, type: 3}
+  - {fileID: 3408174060711294523, guid: bf70a130a373353418993e90225e98f2, type: 3}
+  - {fileID: 123147093556507183, guid: a8d744c464ec9af45a1e037e19020861, type: 3}
+  - {fileID: 1746788172114533248, guid: 7a6ae7963040a8844aa430d7c0c6121b, type: 3}
+  moveUnitsPerSecond: 3
 --- !u!1 &3527214733466126969
 GameObject:
   m_ObjectHideFlags: 0
