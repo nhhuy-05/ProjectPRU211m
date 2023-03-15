@@ -47,8 +47,8 @@ public class PauseMenu : MonoBehaviour
     }
     void Menu()
     {
+        Invoke("GoToMainMenu", 1f);
         GoToMainMenu();
-        //PauseMenuUI.SetActive(true);
         GameIsPaused = false;
     }
     void Quit()
@@ -62,10 +62,10 @@ public class PauseMenu : MonoBehaviour
     }
     IEnumerator GoToMainMenuCoroutine()
     {
-        // Dừng game trong 1 giây
+        // Stop game a while 0.1s 
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(0.1f);
-        // Thực hiện chuyển cảnh
+        // change scene
         SceneManager.LoadScene(0);
         // Kích hoạt lại game
         Time.timeScale = 1f;
