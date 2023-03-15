@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/Paths/Path3.prefab.meta
 guid: bf70a130a373353418993e90225e98f2
+========
+guid: a8d744c464ec9af45a1e037e19020861
+>>>>>>>> master:Assets/Resources/Paths/Path4.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
