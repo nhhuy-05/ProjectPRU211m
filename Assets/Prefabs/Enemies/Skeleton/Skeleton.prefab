@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 94803204875717826}
   - component: {fileID: 6149831617863284801}
   - component: {fileID: 1260261191264652630}
+  - component: {fileID: 1396937459118864463}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -103,6 +104,25 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 3131017005942203142}
+--- !u!114 &1396937459118864463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269541528396803840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6fcfd45ce16dd4b9f04764a900de6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paths:
+  - {fileID: 4065134106321098446, guid: 799fec76643e8364fadc2f6e609cf0b1, type: 3}
+  - {fileID: 1610528833445446531, guid: b324f0d8de2b5e7428b748d1f3527e22, type: 3}
+  - {fileID: 3408174060711294523, guid: bf70a130a373353418993e90225e98f2, type: 3}
+  - {fileID: 123147093556507183, guid: a8d744c464ec9af45a1e037e19020861, type: 3}
+  - {fileID: 1746788172114533248, guid: 7a6ae7963040a8844aa430d7c0c6121b, type: 3}
+  moveUnitsPerSecond: 5
 --- !u!1 &2123233555215576230
 GameObject:
   m_ObjectHideFlags: 0
