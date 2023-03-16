@@ -29,11 +29,11 @@ public class InitializeHeroes : MonoBehaviour
         mountainTilemap = GameObject.Find("Mountain").GetComponent<Tilemap>();
 
         // Get the valid positions inside the mountain area.
-        List<Vector3Int> validTilePositions = GetValidTilePositions(mountainTilemap);
+        List<Vector3Int> validTilePositions = GetValidPositions(mountainTilemap);
 
         // Create the archers.
         createHeroes(archerPrefab, 9, validTilePositions);
-        
+
         // Create the cowboys.
         createHeroes(cowboyPrefab, 8, validTilePositions);
 
@@ -45,23 +45,19 @@ public class InitializeHeroes : MonoBehaviour
     }
 
     // method get a valid position inside the mountain area.
-    private List<Vector3Int> GetValidTilePositions(Tilemap moutainTilemap)
+    private List<Vector3Int> GetValidPositions(Tilemap tilemap)
     {
-        List<Vector3Int> validTilePositions = new List<Vector3Int>();
-        BoundsInt tilemapBounds = mountainTilemap.cellBounds;
-        for (int x = tilemapBounds.xMin; x < tilemapBounds.xMax; x++)
+        List<Vector3Int> validPositions = new List<Vector3Int>();
+
+        foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin)
         {
-            for (int y = tilemapBounds.yMin; y < tilemapBounds.yMax; y++)
+            if (tilemap.HasTile(position))
             {
-                Vector3Int tilePosition = new Vector3Int(x, y, 0);
-                TileBase tile = mountainTilemap.GetTile(tilePosition);
-                if (tile != null)
-                {
-                    validTilePositions.Add(tilePosition);
-                }
+                validPositions.Add(position);
             }
         }
-        return validTilePositions;
+
+        return validPositions;
     }
 
     // method random create Heroes
@@ -95,7 +91,10 @@ public class InitializeHeroes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
+
+    
+
 }
 

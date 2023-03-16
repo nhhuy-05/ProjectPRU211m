@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2583788051088204372}
   - component: {fileID: 2592307563551551730}
   - component: {fileID: 7675039854920755027}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4387397190921088072}
   - component: {fileID: 5285037769864067058}
   - component: {fileID: 1499772855738825225}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 7157754836551391492}
   - component: {fileID: 1898003767773295802}
   - component: {fileID: 2326003724265615333}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SleepingEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5080,7 +5080,7 @@ GameObject:
   - component: {fileID: 554871060961892241}
   - component: {fileID: 5361383037474959631}
   - component: {fileID: 6931941385729002494}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5216,7 +5216,7 @@ GameObject:
   - component: {fileID: 5055436430198067822}
   - component: {fileID: 1195465722241722953}
   - component: {fileID: 1247524770825190477}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5318,7 +5318,7 @@ GameObject:
   - component: {fileID: 5779500640649118859}
   - component: {fileID: 3115992617005098047}
   - component: {fileID: 6079318789443288806}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5452,7 +5452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6998295149303825314}
   - component: {fileID: 6998295149303825317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5536,7 +5536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6998295149359105141}
   - component: {fileID: 6998295149359105140}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5550,14 +5550,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6998295149359105138}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5152, z: 0.0066}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 0.13066512, y: 0.99874085, z: 0.8834694}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6998295150202007366}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &6998295149359105140
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5619,11 +5619,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6998295150202007366}
-  - component: {fileID: 176880305790281188}
   - component: {fileID: 6475872795577355995}
-  m_Layer: 0
+  - component: {fileID: -2896550095975397383}
+  - component: {fileID: -1946242444248020762}
+  - component: {fileID: 3162630615091732543}
+  m_Layer: 6
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5647,43 +5649,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &176880305790281188
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6998295150202007367}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.06998457, y: 1.0150204}
-      - {x: -0.06542803, y: 1.0167111}
-      - {x: -0.06371562, y: 0.87990165}
-      - {x: -0.06934823, y: 0.5024238}
-      - {x: -0.50092715, y: 0.49955738}
-      - {x: -0.49675155, y: 0.057953715}
-      - {x: -0.49588883, y: -0.4989302}
-      - {x: 0.2317155, y: -0.49589443}
-      - {x: 0.5060436, y: -0.50129426}
-      - {x: 0.4976406, y: 0.18887076}
-      - {x: 0.49874473, y: 0.50286853}
-      - {x: 0.06855774, y: 0.50101113}
 --- !u!114 &6475872795577355995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5697,6 +5662,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+--- !u!58 &-2896550095975397383
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998295150202007367}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5
+--- !u!50 &-1946242444248020762
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998295150202007367}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &3162630615091732543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998295150202007367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6906eea8ba5651b4fa03839a7674679f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRange: 5
+  fireRate: 0.5
+  weaponPrefabs: {fileID: 3692193743126570893, guid: 55413a1b394ce3a4c864f19166bd3b2a, type: 3}
 --- !u!1 &7146380318622789263
 GameObject:
   m_ObjectHideFlags: 0
@@ -5709,7 +5726,7 @@ GameObject:
   - component: {fileID: 599403083491670206}
   - component: {fileID: 8487435045196678632}
   - component: {fileID: 1152045781848777793}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5830,7 +5847,7 @@ GameObject:
   - component: {fileID: 860603698803262694}
   - component: {fileID: 4122616354825411512}
   - component: {fileID: 7940059008142148045}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

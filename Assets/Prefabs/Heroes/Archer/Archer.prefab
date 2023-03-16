@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4345348547261000730}
   - component: {fileID: 1928695137257136041}
   - component: {fileID: 7644985480958926895}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5813850030714042155}
   - component: {fileID: 64454692719780559}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Longbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1346186661009180092}
   - component: {fileID: 1271364802219474670}
   - component: {fileID: 6817385261860877836}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SleepingEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5028,7 +5028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4140568152152779911}
   - component: {fileID: 8310256842868963848}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5113,7 +5113,7 @@ GameObject:
   - component: {fileID: 4254139909308300692}
   - component: {fileID: 2808704925227527892}
   - component: {fileID: 7314212029715776175}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5248,7 +5248,7 @@ GameObject:
   - component: {fileID: 90178671726235440}
   - component: {fileID: 629711943899542186}
   - component: {fileID: 3763299702026109467}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5384,7 +5384,7 @@ GameObject:
   - component: {fileID: 6630453556689812637}
   - component: {fileID: 6011457326608975328}
   - component: {fileID: 6510327427323054031}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5484,11 +5484,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 987316744140449279}
-  - component: {fileID: 5169042593524967396}
   - component: {fileID: 6661695624464342328}
-  m_Layer: 0
+  - component: {fileID: 2992850220363744586}
+  - component: {fileID: 7938276875563125910}
+  - component: {fileID: 2822992056168029259}
+  - component: {fileID: -1146242285644287520}
+  m_Layer: 6
   m_Name: Archer
-  m_TagString: Untagged
+  m_TagString: Archer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5501,7 +5504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7429250907081201748}
   m_LocalRotation: {x: 0, y: -0, z: 0.99580485, w: -0.091502465}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.36, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5512,71 +5515,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1249.5}
---- !u!60 &5169042593524967396
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7429250907081201748}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.6424533, y: 0.29955867}
-      - {x: 0.7292826, y: 0.32110474}
-      - {x: 0.6680889, y: 0.5096086}
-      - {x: 0.5503062, y: 0.5789039}
-      - {x: 0.46834356, y: 0.5980197}
-      - {x: 0.38808328, y: 0.67627597}
-      - {x: 0.3447447, y: 0.7750307}
-      - {x: 0.28614578, y: 0.949319}
-      - {x: 0.24559127, y: 0.90995705}
-      - {x: 0.23659497, y: 0.6457302}
-      - {x: 0.28692624, y: 0.4315939}
-      - {x: 0.3023627, y: 0.39349177}
-      - {x: 0.10586814, y: 0.49415568}
-      - {x: -0.06682268, y: 0.49663734}
-      - {x: -0.3013944, y: 0.4112481}
-      - {x: -0.44471562, y: 0.22435562}
-      - {x: -0.5149572, y: -0.0046804547}
-      - {x: -0.42153153, y: -0.27442488}
-      - {x: -0.24665505, y: -0.44598883}
-      - {x: -0.14841229, y: -0.47708234}
-      - {x: 0.04881447, y: -0.5004425}
-      - {x: 0.18189797, y: -0.45835474}
-      - {x: 0.23795262, y: -0.57745665}
-      - {x: 0.2459952, y: -0.7357784}
-      - {x: 0.29788333, y: -0.88113934}
-      - {x: 0.30748394, y: -0.90033984}
-      - {x: 0.32411128, y: -0.9024913}
-      - {x: 0.33771116, y: -0.78980094}
-      - {x: 0.381201, y: -0.6305683}
-      - {x: 0.50774825, y: -0.5339955}
-      - {x: 0.65412134, y: -0.49747548}
-      - {x: 0.7217583, y: -0.2957983}
-      - {x: 0.75190544, y: -0.16528986}
-      - {x: 0.7007626, y: -0.08607661}
-      - {x: 0.64310455, y: -0.13936298}
-      - {x: 0.6232314, y: 0.08926051}
-      - {x: 0.7194423, y: 0.09623397}
-      - {x: 0.75695086, y: 0.16490853}
-      - {x: 0.75436294, y: 0.2128755}
-      - {x: 0.68833715, y: 0.2549194}
 --- !u!114 &6661695624464342328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5590,6 +5528,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+--- !u!114 &2992850220363744586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429250907081201748}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a979190e78514844da9199bd19894e33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+--- !u!114 &7938276875563125910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429250907081201748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6906eea8ba5651b4fa03839a7674679f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRange: 5
+  fireRate: 0.5
+  weaponPrefabs: {fileID: 9168946154683675168, guid: bcdb95416dba32a48aabdfa2e5b23d6a, type: 3}
+--- !u!58 &2822992056168029259
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429250907081201748}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5
+--- !u!50 &-1146242285644287520
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429250907081201748}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7680042253709859442
 GameObject:
   m_ObjectHideFlags: 0
@@ -5602,7 +5605,7 @@ GameObject:
   - component: {fileID: 835776272025097052}
   - component: {fileID: 6422397810249901931}
   - component: {fileID: 4024368984241688720}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5629,8 +5632,6 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 1544, y: -130}
   m_SizeDelta: {x: 173.5, y: -1182}
-  m_AnchoredPosition: {x: 207, y: -157}
-  m_SizeDelta: {x: 173.5, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &835776272025097052
 CanvasRenderer:
@@ -5725,7 +5726,7 @@ GameObject:
   - component: {fileID: 6569225725618756587}
   - component: {fileID: 661979621167765714}
   - component: {fileID: 5150507494917807616}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5802,7 +5803,7 @@ GameObject:
   - component: {fileID: 764288141041583975}
   - component: {fileID: 4633657244747223340}
   - component: {fileID: 1457309175584355302}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
