@@ -18,7 +18,7 @@ public class TargetAndFireEnemies : MonoBehaviour
 
     // Minh (sound effect)
 
-    public static AudioSource aus;
+    public AudioSource aus;
 
     public AudioClip shootingSound;
 
