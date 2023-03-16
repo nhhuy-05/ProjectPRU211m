@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Arrow
+  - Bullet
+  - MagicBall
+  - RoundShot
+  - Archer
+  - Wizard
+  - Tank
+  - Cowboy
   layers:
   - Default
   - TransparentFX
@@ -11,7 +20,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Moutain
   - 
   - 
   - 
