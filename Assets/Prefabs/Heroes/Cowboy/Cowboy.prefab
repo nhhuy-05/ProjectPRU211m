@@ -67,6 +67,8 @@ MonoBehaviour:
   maxRange: 5
   fireRate: 1
   weaponPrefabs: {fileID: 4334578080895014820, guid: c159c1d7aad501a43bbb5167ef14ce7a, type: 3}
+  aus: {fileID: 5672674164569700798, guid: 6b4c7ed7d4f20b44f9b5dddbeec9c067, type: 3}
+  shootingSound: {fileID: 8300000, guid: 38d10927cd6214442ae5fe4d5e770425, type: 3}
 --- !u!58 &3510381906267748815
 CircleCollider2D:
   m_ObjectHideFlags: 0

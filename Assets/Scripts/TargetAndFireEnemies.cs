@@ -15,6 +15,21 @@ public class TargetAndFireEnemies : MonoBehaviour
     private float nextFireTime;
     private List<GameObject> targetsInRange = new List<GameObject>();
 
+
+    // Minh (sound effect)
+
+    public AudioSource aus;
+
+    public AudioClip shootingSound;
+
+    private void Start()
+    {
+            
+        aus = GameObject.FindGameObjectsWithTag("audiosource")[0].GetComponent<AudioSource>();
+    }
+
+    //--
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
@@ -43,6 +58,15 @@ public class TargetAndFireEnemies : MonoBehaviour
 
     private void FireAt(Vector2 targetPosition)
     {
+
+        // Minh (sound effect)
+
+        if (aus && shootingSound)
+        {
+            aus.PlayOneShot(shootingSound);
+        }
+
+        //
         GameObject weapon = Instantiate(weaponPrefabs, transform.position, Quaternion.identity);
         
         // rotate the arrow to face the target

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -45,6 +46,10 @@ public class SpawnEnemies : MonoBehaviour
     float eslapsedTime = 0;
     int _enemiesSpawned = 0;
     float _nextSpawnTime = 0f;
+    //---
+
+    bool isSpawnStart = false; 
+
 
     int randomNumberOfEnemies()
     {
@@ -61,8 +66,7 @@ public class SpawnEnemies : MonoBehaviour
         maxNumberOfMushroomFirstRound = 20;
         maxNumberOfSkeletonFirstRound = 20;
 
-
-        // 
+        //--
         prefabs = new GameObject[] { bossPrefab, eyesPrefab, goblinPrefab, mushroomPrefab, skeletonPrefab };
 
         // Initialize the next spawn time based on the min time spawn
@@ -70,21 +74,28 @@ public class SpawnEnemies : MonoBehaviour
 
         // Enemies per wave
         enemiesPerWave = maxNumberOfBossFirstRound + maxNumberOfEyesFirstRound + maxNumberOfGoblinFirstRound + maxNumberOfGoblinFirstRound + maxNumberOfMushroomFirstRound;
+
+        // Start spawn
+        isSpawnStart = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        eslapsedTime += Time.deltaTime;
+        if (isSpawnStart)
+        {
+            eslapsedTime += Time.deltaTime;
             if (eslapsedTime >= _nextSpawnTime)
             {
-                SpawnEnemy();
+                spawnEnemy();
+                spawnController();  // run if all enemies're destroyed
                 eslapsedTime = 0;
             }
+        }
         
     }
 
-    GameObject SpawnRandomPrefab()
+    GameObject spawnRandomPrefab()
     {
         GameObject prefabToSpawn = null;
         int randomPrefab = Random.Range(0, prefabs.Length);
@@ -137,14 +148,40 @@ public class SpawnEnemies : MonoBehaviour
         return prefabToSpawn;
     }
 
-    private void SpawnEnemy()
+    private void spawnEnemy()
     {
-        GameObject prefabToSpawn = SpawnRandomPrefab(); // Spawn 1 prefab
-        
+        GameObject prefabToSpawn = spawnRandomPrefab(); // Spawn 1 enemy
+        if(prefabToSpawn != null)
+            _enemiesSpawned++;
+    }
 
-        if (_enemiesSpawned >= enemiesPerWave) // add condition if all enemies were destroyed
+    bool isEnemiesDestroyed()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Count() == 0)
+            return true;
+        return false;
+    }
+
+    IEnumerator ExampleCoroutine()
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(5);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+    }
+
+    void spawnController()
+    {
+        if (isEnemiesDestroyed())
         {
+
             // Start the next wave
+            StartCoroutine(ExampleCoroutine());
             currentWave++;
             _enemiesSpawned = 0;
 
@@ -195,8 +232,5 @@ public class SpawnEnemies : MonoBehaviour
 
             }
         }
-
-        if(prefabToSpawn != null)
-            _enemiesSpawned++;
     }
 }
