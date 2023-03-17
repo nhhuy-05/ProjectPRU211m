@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class TargetAndFireEnemies : MonoBehaviour
 {
+    [SerializeField]
+    PlayerController _player;
     public float maxRange = 5f;
     public float fireRate = 1f;
     [SerializeField]
@@ -15,6 +17,7 @@ public class TargetAndFireEnemies : MonoBehaviour
     private float nextFireTime;
     private List<GameObject> targetsInRange = new List<GameObject>();
 
+    private ParticleSystem sleepingEffect;
 
     // Minh (sound effect)
 
@@ -24,7 +27,9 @@ public class TargetAndFireEnemies : MonoBehaviour
 
     private void Start()
     {
-            
+        GameObject body = GameObject.Find("Body");
+        // get the ParticleSystem from the Sleeping Effect GameObject
+        sleepingEffect = body.transform.Find("SleepingEffect").GetComponent<ParticleSystem>();
         aus = GameObject.FindGameObjectsWithTag("audiosource")[0].GetComponent<AudioSource>();
     }
 
@@ -48,12 +53,17 @@ public class TargetAndFireEnemies : MonoBehaviour
 
     private void Update()
     {
-        if (targetsInRange.Count > 0 && Time.time >= nextFireTime)
+        if (sleepingEffect.isPlaying==false)
         {
-            GameObject target = targetsInRange[0];
-            FireAt(target.transform.position);
-            nextFireTime = Time.time + fireRate;
+            if (targetsInRange.Count > 0 && Time.time >= nextFireTime)
+            {
+                GameObject target = targetsInRange[0];
+                FireAt(target.transform.position);
+                nextFireTime = Time.time + fireRate;
+            }
+
         }
+        
     }
 
     private void FireAt(Vector2 targetPosition)
@@ -68,7 +78,7 @@ public class TargetAndFireEnemies : MonoBehaviour
 
         //
         GameObject weapon = Instantiate(weaponPrefabs, transform.position, Quaternion.identity);
-        
+
         // rotate the arrow to face the target
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
