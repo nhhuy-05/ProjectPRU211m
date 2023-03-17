@@ -507,7 +507,6 @@ GameObject:
   - component: {fileID: -1121634759059946705}
   - component: {fileID: -7558253974686688377}
   - component: {fileID: 2685651053273920420}
-  - component: {fileID: 6251617144613777217}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Enemy
@@ -585,27 +584,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.1494683}
   serializedVersion: 2
   m_Radius: 0.6494683
---- !u!50 &6251617144613777217
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5615351709504868984}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &5808289169673397667
 GameObject:
   m_ObjectHideFlags: 0

@@ -33669,7 +33669,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -33821,10 +33821,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61094e70de882c4d824793e5b013d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  archerPrefab: {fileID: 7429250907081201748, guid: 6ebaee20c61731e41b62a74a8e272b9b, type: 3}
-  cowboyPrefab: {fileID: 321140804399635355, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
-  wizardPrefab: {fileID: 6998295150202007367, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
-  tankPrefab: {fileID: 2208419433552732193, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
+  archerPrefab: {fileID: 1756237575193156538, guid: 5adc8835ccdef1a43a5789de9457a9a6, type: 3}
+  cowboyPrefab: {fileID: 343035875796641850, guid: 627db5498470c0345a262d053ab5908c, type: 3}
+  wizardPrefab: {fileID: 8551948144204786525, guid: 25fc2498e839e2947896a90a0a611f42, type: 3}
+  tankPrefab: {fileID: 4256780073362617926, guid: bd83a1d4cafef044095b78b630f30d7a, type: 3}
 --- !u!1 &723218223
 GameObject:
   m_ObjectHideFlags: 0
@@ -34871,6 +34871,7 @@ GameObject:
   - component: {fileID: 1243385635}
   - component: {fileID: 1243385637}
   - component: {fileID: 1243385638}
+  - component: {fileID: 1243385639}
   m_Layer: 0
   m_Name: Boder
   m_TagString: Untagged
@@ -40283,6 +40284,27 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
+--- !u!50 &1243385639
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243385633}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1269340356
 GameObject:
   m_ObjectHideFlags: 0

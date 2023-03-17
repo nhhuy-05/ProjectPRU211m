@@ -22,10 +22,13 @@ public class PlayerController : MonoBehaviour
     {
         // find the Mountain GameObject and Sleeping Effect GameObject by name
         GameObject mountainGameObject = GameObject.Find("Mountain");
+
+        // Get Body
+        GameObject body = GameObject.Find("Body");
         // get the ParticleSystem from the Sleeping Effect GameObject
-        sleepingEffect = transform.Find("SleepingEffect");
+        sleepingEffect = body.transform.Find("SleepingEffect");
         // get canvas from Player gameObject
-        Canvas = transform.Find("Canvas");
+        Canvas = body.transform.Find("Canvas");
         // get Button component from Canvas
         yesOption = Canvas.gameObject.transform.Find("Yes").GetComponent<Button>();
         noOption = Canvas.gameObject.transform.Find("No").GetComponent<Button>();
