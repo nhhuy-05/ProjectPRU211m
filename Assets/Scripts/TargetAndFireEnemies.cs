@@ -18,7 +18,7 @@ public class TargetAndFireEnemies : MonoBehaviour
 
     // Minh (sound effect)
 
-    public AudioSource aus;
+    private AudioSource aus;
 
     public AudioClip shootingSound;
 
@@ -73,9 +73,9 @@ public class TargetAndFireEnemies : MonoBehaviour
         Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         weapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        
-        // add force to the arrow
-        weapon.GetComponent<Rigidbody2D>().AddForce(direction * 100f, ForceMode2D.Impulse);
+
+        // shoot the arrow
+        weapon.GetComponent<Rigidbody2D>().velocity = direction * 100f;
 
         // rotate game object to face the targe if gameobject is archer and wizard
         if (gameObject.tag == "Archer" || gameObject.tag == "Wizard" || gameObject.tag == "Tank")

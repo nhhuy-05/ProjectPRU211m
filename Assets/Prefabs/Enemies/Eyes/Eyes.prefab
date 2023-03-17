@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: -7316881990729540541}
   - component: {fileID: 1767502445383949560}
   - component: {fileID: 2001998146162862465}
-  - component: {fileID: 6953289136388445242}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Enemy
@@ -222,30 +221,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -4.3267247e-11, y: -0.0008216561}
+  m_Offset: {x: 0.000000041843865, y: -0.0008216561}
   serializedVersion: 2
-  m_Radius: 0.38072565
---- !u!50 &6953289136388445242
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3714496528426503049}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Radius: 0.5268801
 --- !u!1 &5082327553700995125
 GameObject:
   m_ObjectHideFlags: 0

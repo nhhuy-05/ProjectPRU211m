@@ -23,11 +23,17 @@ public class EnemiesController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Arrow")
+        if (collision.gameObject.tag == "Arrow" || collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "MagicBall" || collision.gameObject.tag == "RoundShot")
         {
             TakeDamage(20);
+            Destroy(collision.gameObject);
+            // Detroy enemy if health is 0
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
