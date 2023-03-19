@@ -34870,7 +34870,6 @@ GameObject:
   - component: {fileID: 1243385634}
   - component: {fileID: 1243385636}
   - component: {fileID: 1243385635}
-  - component: {fileID: 1243385637}
   - component: {fileID: 1243385638}
   - component: {fileID: 1243385639}
   m_Layer: 0
@@ -40256,19 +40255,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1243385637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1243385633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71ee15aba3f67eb4fb80d8d8b2c85480, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthBar: {fileID: 0}
 --- !u!19719996 &1243385638
 TilemapCollider2D:
   m_ObjectHideFlags: 0
