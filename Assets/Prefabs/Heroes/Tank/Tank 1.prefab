@@ -80,6 +80,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8551948144204786526}
     m_Modifications:
+    - target: {fileID: 1898003767773295802, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
+      propertyPath: randomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898003767773295802, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
+      propertyPath: autoRandomSeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6998295149303825315, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
       propertyPath: m_Name
       value: BodyTank
@@ -131,6 +139,18 @@ PrefabInstance:
     - target: {fileID: 6998295150202007367, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
       propertyPath: m_Name
       value: Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157754836551391492, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157754836551391492, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157754836551391492, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6475872795577355995, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}

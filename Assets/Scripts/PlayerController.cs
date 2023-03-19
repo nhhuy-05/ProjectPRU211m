@@ -22,9 +22,8 @@ public class PlayerController : MonoBehaviour
     {
         // find the Mountain GameObject and Sleeping Effect GameObject by name
         GameObject mountainGameObject = GameObject.Find("Mountain");
-
         // Get Body
-        GameObject body = GameObject.Find("Body");
+        GameObject body = gameObject.transform.Find("Body").gameObject;
         // get the ParticleSystem from the Sleeping Effect GameObject
         sleepingEffect = body.transform.Find("SleepingEffect");
         // get canvas from Player gameObject
