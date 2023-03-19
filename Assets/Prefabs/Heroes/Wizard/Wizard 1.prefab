@@ -70,6 +70,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4165850155810857143}
     m_Modifications:
+    - target: {fileID: 541473842004420309, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
+      propertyPath: randomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 541473842004420309, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
+      propertyPath: autoRandomSeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693656677547504028, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693656677547504028, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693656677547504028, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2208419433552732193, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
       propertyPath: m_Name
       value: Body

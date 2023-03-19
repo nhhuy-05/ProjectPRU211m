@@ -16,6 +16,7 @@ public class TargetAndFireEnemies : MonoBehaviour
     private List<GameObject> targetsInRange = new List<GameObject>();
 
 
+    private ParticleSystem sleepingEffect;
     // Minh (sound effect)
 
     private AudioSource aus;
@@ -24,7 +25,10 @@ public class TargetAndFireEnemies : MonoBehaviour
 
     private void Start()
     {
-            
+        // get child body of gameobject
+        // sleepingEffect = transform.GetComponent<ParticleSystem>();
+        // get the ParticleSystem from the Sleeping Effect GameObject
+        sleepingEffect = transform.Find("SleepingEffect").GetComponent<ParticleSystem>();
         aus = GameObject.FindGameObjectsWithTag("audiosource")[0].GetComponent<AudioSource>();
     }
 
@@ -48,11 +52,15 @@ public class TargetAndFireEnemies : MonoBehaviour
 
     private void Update()
     {
-        if (targetsInRange.Count > 0 && Time.time >= nextFireTime)
+        if (sleepingEffect.isPlaying == false)
         {
-            GameObject target = targetsInRange[0];
-            FireAt(target.transform.position);
-            nextFireTime = Time.time + fireRate;
+            if (targetsInRange.Count > 0 && Time.time >= nextFireTime)
+            {
+                GameObject target = targetsInRange[0];
+                FireAt(target.transform.position);
+                nextFireTime = Time.time + fireRate;
+            }
+
         }
     }
 
