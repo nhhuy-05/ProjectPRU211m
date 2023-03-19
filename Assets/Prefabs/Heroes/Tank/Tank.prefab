@@ -5662,6 +5662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  isSleeping: 1
 --- !u!58 &-2896550095975397383
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5711,10 +5712,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6906eea8ba5651b4fa03839a7674679f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 6475872795577355995}
   maxRange: 5
   fireRate: 0.5
   weaponPrefabs: {fileID: 3692193743126570893, guid: 55413a1b394ce3a4c864f19166bd3b2a, type: 3}
-  aus: {fileID: 5672674164569700798, guid: 6b4c7ed7d4f20b44f9b5dddbeec9c067, type: 3}
   shootingSound: {fileID: 8300000, guid: 3e347fe7f91ef174ebaa11b2141a1e7a, type: 3}
 --- !u!1 &7146380318622789263
 GameObject:

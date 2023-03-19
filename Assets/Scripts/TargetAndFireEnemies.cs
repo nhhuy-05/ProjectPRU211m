@@ -7,87 +7,134 @@ using UnityEngine;
 /// </summary>
 public class TargetAndFireEnemies : MonoBehaviour
 {
-    public float maxRange = 5f;
     public float fireRate = 1f;
     [SerializeField]
     public GameObject weaponPrefabs;
 
     private float nextFireTime;
+
     private List<GameObject> targetsInRange = new List<GameObject>();
 
+    private ParticleSystem sleepingEffect;
 
-    // Minh (sound effect)
-
-    public AudioSource aus;
+    private AudioSource aus;
 
     public AudioClip shootingSound;
 
     private void Start()
     {
-            
+        sleepingEffect = transform.Find("SleepingEffect").GetComponent<ParticleSystem>();
         aus = GameObject.FindGameObjectsWithTag("audiosource")[0].GetComponent<AudioSource>();
     }
 
-    //--
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        // just cowboy and archer can shoot all enemies, another hero can only shoot Boss, Goblin, Skeleton and Mushroom
+        if (gameObject.tag == "Archer" || gameObject.tag == "Cowboy")
         {
-            targetsInRange.Add(other.gameObject);
+            if (other.CompareTag("Boss") || other.CompareTag("Eyes") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
+            {
+                targetsInRange.Add(other.gameObject);
+            }
         }
+        if (gameObject.tag == "Tank" || gameObject.tag == "Wizard")
+        {
+            if (other.CompareTag("Boss") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
+            {
+                targetsInRange.Add(other.gameObject);
+            }
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (gameObject.tag == "Archer" || gameObject.tag == "Cowboy")
         {
-            targetsInRange.Remove(other.gameObject);
+            if (other.CompareTag("Boss") || other.CompareTag("Eyes") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
+            {
+                targetsInRange.Remove(other.gameObject);
+            }
+        }
+        if (gameObject.tag == "Tank" || gameObject.tag == "Wizard")
+        {
+            if (other.CompareTag("Boss") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
+            {
+                targetsInRange.Remove(other.gameObject);
+            }
         }
     }
 
     private void Update()
     {
-        if (targetsInRange.Count > 0 && Time.time >= nextFireTime)
+        if (sleepingEffect.isPlaying == false)
         {
-            GameObject target = targetsInRange[0];
-            FireAt(target.transform.position);
-            nextFireTime = Time.time + fireRate;
+            if (targetsInRange.Count > 0 && Time.time >= nextFireTime)
+            {
+                GameObject target = targetsInRange[0];
+                FireAt(target.transform.position);
+                nextFireTime = Time.time + fireRate;
+            }
         }
     }
 
     private void FireAt(Vector2 targetPosition)
     {
+        // instantiate weapon prefab
+        GameObject weapon = Instantiate(weaponPrefabs, transform.position, Quaternion.identity);
 
-        // Minh (sound effect)
+        // rotate the weapon to face the target
+        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        weapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
+        // shoot the weapon
+        //if ( gameObject.tag == "Tank")
+        //{
+        //    // TODO: shoot follow rainbow line
+        //    // calculate the rainbow direction by rotating the original direction vector
+        //    Vector3 rainbowDirection = Quaternion.AngleAxis(Time.time * 50f, Vector3.forward) * direction;
+
+        //    // calculate the rainbow displacement vector using a sine wave formula
+        //    float rainbowFrequency = 2f;
+        //    float rainbowAmplitude = 0.5f;
+        //    float rainbowOffset = Time.time * rainbowFrequency;
+        //    Vector3 rainbowDisplacement = rainbowAmplitude * Mathf.Sin(rainbowOffset) * Vector3.up;
+
+        //    // add the rainbow displacement vector to the original direction vector to get the final direction vector
+        //    Vector3 finalDirection = direction;
+        //    finalDirection += (Vector3)rainbowDirection;
+        //    finalDirection += rainbowDisplacement;
+
+        //    // set the velocity of the weapon to the final direction vector
+        //    weapon.GetComponent<Rigidbody2D>().velocity = finalDirection.normalized * 10f;
+        //}
+        if (gameObject.tag == "Wizard" || gameObject.tag == "Archer" || gameObject.tag == "Cowboy" || gameObject.tag == "Tank")
+        {
+            weapon.GetComponent<Rigidbody2D>().velocity = direction * 100f;
+        }
+
+        // play shooting sound
         if (aus && shootingSound)
         {
             aus.PlayOneShot(shootingSound);
         }
-
-        //
-        GameObject weapon = Instantiate(weaponPrefabs, transform.position, Quaternion.identity);
-        
-        // rotate the arrow to face the target
-        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        weapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        
-        // add force to the arrow
-        weapon.GetComponent<Rigidbody2D>().AddForce(direction * 100f, ForceMode2D.Impulse);
 
         // rotate game object to face the targe if gameobject is archer and wizard
         if (gameObject.tag == "Archer" || gameObject.tag == "Wizard" || gameObject.tag == "Tank")
         {
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-        // rotate the gun to face the target if gameobject is cowboy
         if (gameObject.tag == "Cowboy")
         {
-            // Get gun gameobject from cowboy
-            //GameObject gun = gameObject.transform.Find("Gun").gameObject;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            // Get game object child 1 of game object
+            GameObject child1 = gameObject.transform.GetChild(1).gameObject;
+
+            // Get game object "Gun" of child 1 of game object
+            GameObject gun = child1.transform.Find("Gun").gameObject;
+
+            // Rotate the gun to face the target
+            gun.transform.rotation = Quaternion.AngleAxis(angle + 180, Vector3.forward);
         }
     }
 }

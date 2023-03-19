@@ -16,16 +16,18 @@ public class PlayerController : MonoBehaviour
 
     private bool isSleeping = true; // flag to indicate if the player is sleeping
     private Vector3 targetPosition; // position where the player is moving to
-    //public GameObject popUp;
+
 
     void Start()
     {
         // find the Mountain GameObject and Sleeping Effect GameObject by name
         GameObject mountainGameObject = GameObject.Find("Mountain");
+        // Get Body
+        GameObject body = gameObject.transform.Find("Body").gameObject;
         // get the ParticleSystem from the Sleeping Effect GameObject
-        sleepingEffect = transform.Find("SleepingEffect");
+        sleepingEffect = body.transform.Find("SleepingEffect");
         // get canvas from Player gameObject
-        Canvas = transform.Find("Canvas");
+        Canvas = body.transform.Find("Canvas");
         // get Button component from Canvas
         yesOption = Canvas.gameObject.transform.Find("Yes").GetComponent<Button>();
         noOption = Canvas.gameObject.transform.Find("No").GetComponent<Button>();
@@ -39,6 +41,11 @@ public class PlayerController : MonoBehaviour
         isSleeping = false;
         Canvas.gameObject.SetActive(false);
         sleepingEffect.gameObject.GetComponent<ParticleSystem>().Stop();
+        if (gameObject.tag == "Archer")
+        {
+            CommonPropeties.coin -= CommonPropeties.coinOfArcher;
+            Debug.Log(CommonPropeties.coin);
+        }
     }
     public void clickNo()
     {
