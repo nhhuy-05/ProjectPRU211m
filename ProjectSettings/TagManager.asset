@@ -14,6 +14,11 @@ TagManager:
   - Tank
   - Cowboy
   - audiosource
+  - Boss
+  - Eyes
+  - Goblin
+  - Mushroom
+  - Skeleton
   layers:
   - Default
   - TransparentFX
