@@ -41,6 +41,11 @@ public class PlayerController : MonoBehaviour
         isSleeping = false;
         Canvas.gameObject.SetActive(false);
         sleepingEffect.gameObject.GetComponent<ParticleSystem>().Stop();
+        if (gameObject.tag == "Archer")
+        {
+            CommonPropeties.coin -= CommonPropeties.coinOfArcher;
+            Debug.Log(CommonPropeties.coin);
+        }
     }
     public void clickNo()
     {

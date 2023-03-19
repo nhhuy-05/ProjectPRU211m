@@ -7,8 +7,8 @@ using UnityEngine;
 /// </summary>
 public class CommonPropeties
 {
-    
-    public static int coin { get; set; } = 200; // Coin
+    // Common properties
+    public static int coin { get; set; } = 300; // Coin
     public static int healthOfVillage { get; set; } = 100; // Health of Village
 
     // Speed of the enemies
@@ -25,10 +25,10 @@ public class CommonPropeties
     public static int damageOfMagicBall { get; set; } = 5; // Damage of MagicBall
 
     // Damage of Enemies on Village
-    public static int damageOfBoss { get; set; } = 5; // Damage of Boss on Village
+    public static int damageOfBoss { get; set; } = 10; // Damage of Boss on Village
     public static int damageOfEyes { get; set; } = 5; // Damage of Eyes on Village
     public static int damageOfMushroom { get; set; } = 5; // Damage of Mushroom on Village
-    public static int damageOfSkeleton { get; set; } = 5; // Damage of Skeleton on Village
+    public static int damageOfSkeleton { get; set; } = 7; // Damage of Skeleton on Village
     public static int damageOfGoblin { get; set; } = 5; // Damage of Goblin on Village
 
     // Health of Enemies
@@ -56,6 +56,18 @@ public class CommonPropeties
     public static int numberCowboy { get; set; } = 0; // Number of Cowboy
     public static int numberWizard { get; set; } = 0; // Number of Wizard
     public static int numberTank { get; set; } = 0; // Number of Tank
-    
-    
+
+    // Coin of Enemies when they die
+    public static int coinOfBoss { get; set; } = 20; // Coin of Boss when they die
+    public static int coinOfEyes { get; set; } = 5; // Coin of Eyes when they die
+    public static int coinOfMushroom { get; set; } = 5; // Coin of Mushroom when they die
+    public static int coinOfSkeleton { get; set; } = 4; // Coin of Skeleton when they die
+    public static int coinOfGoblin { get; set; } = 3; // Coin of Goblin when they die
+
+    // Coin of Heroes when buy them
+    public static int coinOfArcher { get; set; } = 125; // Coin of Archer when buy them
+    public static int coinOfCowboy { get; set; } = 125; // Coin of Cowboy when buy them
+    public static int coinOfWizard { get; set; } = 150; // Coin of Wizard when buy them
+    public static int coinOfTank { get; set; } = 175; // Coin of Tank when buy them
+
 }
