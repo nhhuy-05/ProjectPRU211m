@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isSleeping = true; // flag to indicate if the player is sleeping
     private Vector3 targetPosition; // position where the player is moving to
-    //public GameObject popUp;
+
 
     void Start()
     {
