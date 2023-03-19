@@ -126,12 +126,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8034549904294684880}
   - component: {fileID: 6517901972980014706}
-  - component: {fileID: -5184090084095605815}
   - component: {fileID: 1887419882680459714}
   - component: {fileID: 5323627557886644985}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +142,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4483724069128155163}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.5054, y: -0.4886, z: 0}
   m_LocalScale: {x: 1.0130869, y: 1.0131303, z: 1}
   m_ConstrainProportionsScale: 0
@@ -153,7 +152,7 @@ Transform:
   - {fileID: 4547652194055873644}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6517901972980014706
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -206,25 +205,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5184090084095605815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4483724069128155163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d6fcfd45ce16dd4b9f04764a900de6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paths:
-  - {fileID: 4065134106321098446, guid: 799fec76643e8364fadc2f6e609cf0b1, type: 3}
-  - {fileID: 1610528833445446531, guid: b324f0d8de2b5e7428b748d1f3527e22, type: 3}
-  - {fileID: 3408174060711294523, guid: bf70a130a373353418993e90225e98f2, type: 3}
-  - {fileID: 123147093556507183, guid: a8d744c464ec9af45a1e037e19020861, type: 3}
-  - {fileID: 1746788172114533248, guid: 7a6ae7963040a8844aa430d7c0c6121b, type: 3}
-  moveUnitsPerSecond: 1
 --- !u!114 &1887419882680459714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,9 +217,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efe0c4a018b32f4095ad4af80ac5f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 9065075108142004750}
+  paths:
+  - {fileID: 4065134106321098446, guid: 799fec76643e8364fadc2f6e609cf0b1, type: 3}
+  - {fileID: 1610528833445446531, guid: b324f0d8de2b5e7428b748d1f3527e22, type: 3}
+  - {fileID: 3408174060711294523, guid: bf70a130a373353418993e90225e98f2, type: 3}
+  - {fileID: 123147093556507183, guid: a8d744c464ec9af45a1e037e19020861, type: 3}
+  - {fileID: 1746788172114533248, guid: 7a6ae7963040a8844aa430d7c0c6121b, type: 3}
+  moveUnitsPerSecond: 5
+  maxHealth: 150
+  currentEnemyHealth: 0
+  currentVillageHouse: 0
+  healthEnemyBar: {fileID: 9065075108142004750}
+  healthVillageBar: {fileID: 0}
 --- !u!58 &5323627557886644985
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -445,7 +434,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7047521357911333286}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -453,10 +442,10 @@ RectTransform:
   - {fileID: 4835783316414447465}
   m_Father: {fileID: 4547652194055873644}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -3.643, y: -0.217}
+  m_AnchoredPosition: {x: -4.73, y: -1.28}
   m_SizeDelta: {x: 1.8682, y: 0.3309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &214668818446193783
