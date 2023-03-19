@@ -8,15 +8,15 @@ using UnityEngine;
 public class CommonPropeties
 {
     // Common properties
-    public static int coin { get; set; } = 300; // Coin
+    public static int coin { get; set; } = 1000; // Coin
     public static int healthOfVillage { get; set; } = 100; // Health of Village
 
     // Speed of the enemies
-    public static float speedOfBoss { get; set; } = 1f; // Speed of Boss
-    public static float speedOfEyes { get; set; } = 1f; // Speed of Eyes
+    public static float speedOfBoss { get; set; } = 5f; // Speed of Boss
+    public static float speedOfEyes { get; set; } = 4f; // Speed of Eyes
     public static float speedOfMushroom { get; set; } = 1f; // Speed of Mushroom
-    public static float speedOfSkeleton { get; set; } = 1f; // Speed of Skeleton
-    public static float speedOfGoblin { get; set; } = 1f; // Speed of Goblin
+    public static float speedOfSkeleton { get; set; } = 3f; // Speed of Skeleton
+    public static float speedOfGoblin { get; set; } = 2f; // Speed of Goblin
 
     // Damage of Weapons on Enemies
     public static int damageOfArrow { get; set; } = 20; // Damage of Arrow
@@ -25,24 +25,24 @@ public class CommonPropeties
     public static int damageOfMagicBall { get; set; } = 5; // Damage of MagicBall
 
     // Damage of Enemies on Village
-    public static int damageOfBoss { get; set; } = 10; // Damage of Boss on Village
-    public static int damageOfEyes { get; set; } = 5; // Damage of Eyes on Village
-    public static int damageOfMushroom { get; set; } = 5; // Damage of Mushroom on Village
-    public static int damageOfSkeleton { get; set; } = 7; // Damage of Skeleton on Village
-    public static int damageOfGoblin { get; set; } = 5; // Damage of Goblin on Village
+    public static int damageOfBoss { get; set; } = 5; // Damage of Boss on Village
+    public static int damageOfEyes { get; set; } = 1; // Damage of Eyes on Village
+    public static int damageOfMushroom { get; set; } = 1; // Damage of Mushroom on Village
+    public static int damageOfSkeleton { get; set; } = 2; // Damage of Skeleton on Village
+    public static int damageOfGoblin { get; set; } = 2; // Damage of Goblin on Village
 
     // Health of Enemies
-    public static int healthOfBoss { get; set; } = 100; // Health of Boss
-    public static int healthOfEyes { get; set; } = 100; // Health of Eyes
-    public static int healthOfMushroom { get; set; } = 100; // Health of Mushroom
-    public static int healthOfSkeleton { get; set; } = 100; // Health of Skeleton
+    public static int healthOfBoss { get; set; } = 175; // Health of Boss
+    public static int healthOfEyes { get; set; } = 75; // Health of Eyes
+    public static int healthOfMushroom { get; set; } = 150; // Health of Mushroom
+    public static int healthOfSkeleton { get; set; } = 125; // Health of Skeleton
     public static int healthOfGoblin { get; set; } = 100; // Health of Goblin
 
     // FireRate of Heroes
     public static float fireRateOfArcher { get; set; } = 0.5f; // FireRate of Archer
     public static float fireRateOfCowboy { get; set; } = 0.5f; // FireRate of Cowboy
-    public static float fireRateOfWizard { get; set; } = 0.5f; // FireRate of Wizard
-    public static float fireRateOfTank { get; set; } = 0.5f; // FireRate of Tank
+    public static float fireRateOfWizard { get; set; } = 3f; // FireRate of Wizard
+    public static float fireRateOfTank { get; set; } = 5f; // FireRate of Tank
 
     // Number Instantiate Enemies
     public static int numberInstantiateBoss { get; set; } = 1; // Number Instantiate Boss
@@ -52,10 +52,10 @@ public class CommonPropeties
     public static int numberInstantiateGoblin { get; set; } = 1; // Number Instantiate Goblin
 
     // Number of Heroes
-    public static int numberArcher { get; set; } = 0; // Number of Archer
-    public static int numberCowboy { get; set; } = 0; // Number of Cowboy
-    public static int numberWizard { get; set; } = 0; // Number of Wizard
-    public static int numberTank { get; set; } = 0; // Number of Tank
+    public static int numberArcher { get; set; } = 9; // Number of Archer
+    public static int numberCowboy { get; set; } = 8; // Number of Cowboy
+    public static int numberWizard { get; set; } = 4; // Number of Wizard
+    public static int numberTank { get; set; } = 4; // Number of Tank
 
     // Coin of Enemies when they die
     public static int coinOfBoss { get; set; } = 20; // Coin of Boss when they die
