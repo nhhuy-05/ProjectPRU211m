@@ -5528,7 +5528,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  isSleeping: 1
 --- !u!114 &2992850220363744586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5554,8 +5553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6906eea8ba5651b4fa03839a7674679f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 6661695624464342328}
-  maxRange: 5
   fireRate: 0.5
   weaponPrefabs: {fileID: 9168946154683675168, guid: bcdb95416dba32a48aabdfa2e5b23d6a, type: 3}
   shootingSound: {fileID: 8300000, guid: 8e9f567a2f3c7a445b4e9b9df1136de7, type: 3}
