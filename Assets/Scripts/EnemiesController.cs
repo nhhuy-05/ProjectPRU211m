@@ -22,7 +22,7 @@ public class EnemiesController : MonoBehaviour
     // health bar of enemies
     public HealthBarContainer healthEnemyBar;
     // health bar of village
-    public HealthBarContainer healthVillageBar;
+    //public HealthBarContainer healthVillageBar;
 
 
     // Start is called before the first frame update
@@ -31,8 +31,9 @@ public class EnemiesController : MonoBehaviour
         // set the health
         currentEnemyHealth = maxHealth;
         currentVillageHouse = CommonPropeties.healthOfVillage;
+        
         healthEnemyBar.SetMaxHealth(maxHealth);
-        healthVillageBar.SetMaxHealth(currentVillageHouse);
+        //healthVillageBar.SetMaxHealth(currentVillageHouse);
 
         // set the path
         randomPath = Random.Range(0, paths.Length);
@@ -66,6 +67,28 @@ public class EnemiesController : MonoBehaviour
         // check heath and destroy enemies
         if (currentEnemyHealth <= 0)
         {
+            if (gameObject.tag == "Boss")
+            {
+                CommonPropeties.coin += CommonPropeties.coinOfBoss;
+            }
+            if (gameObject.tag == "Eyes")
+            {
+                CommonPropeties.coin += CommonPropeties.coinOfEyes;
+            }
+            if (gameObject.tag == "Goblin")
+            {
+                CommonPropeties.coin += CommonPropeties.coinOfGoblin;
+
+            }
+            if (gameObject.tag == "MushRoom")
+            {
+                CommonPropeties.coin += CommonPropeties.coinOfMushroom;
+
+            }
+            if (gameObject.tag == "Skeleton")
+            {
+                CommonPropeties.coin += CommonPropeties.coinOfSkeleton;
+            }
             Destroy(gameObject);
         }
     }
@@ -108,31 +131,29 @@ public class EnemiesController : MonoBehaviour
                 // reduce the health of village base on the damage of enemies
                 if (gameObject.tag == "Boss")
                 {
-                    currentVillageHouse -= CommonPropeties.damageOfBoss;
+                    CommonPropeties.healthOfVillage -= CommonPropeties.damageOfBoss;
                 }
                 if (gameObject.tag == "Eyes")
                 {
-                    currentVillageHouse -= CommonPropeties.damageOfEyes;
+                    CommonPropeties.healthOfVillage -= CommonPropeties.damageOfEyes;
                 }
                 if (gameObject.tag == "Goblin")
                 {
-                    currentVillageHouse -= CommonPropeties.damageOfGoblin;
+                    CommonPropeties.healthOfVillage -= CommonPropeties.damageOfGoblin;
                 }
                 if (gameObject.tag == "MushRoom")
                 {
-                    currentVillageHouse -= CommonPropeties.damageOfMushroom;
+                    CommonPropeties.healthOfVillage -= CommonPropeties.damageOfMushroom;
                 }
                 if (gameObject.tag == "Skeleton")
                 {
-                    currentVillageHouse -= CommonPropeties.damageOfSkeleton;
+                    CommonPropeties.healthOfVillage -= CommonPropeties.damageOfSkeleton;
                 }
                 // load losing scene if village health is 0
-                if (currentVillageHouse <= 0)
+                if (CommonPropeties.healthOfVillage <= 0)
                 {
-                    //CommonPropeties.healthOfVillage = 100;
-                    //CommonPropeties.score = 0;
-                    //CommonPropeties.level = 1;
-                    //CommonPropeties.isWin = false;
+                    CommonPropeties.healthOfVillage = 100;
+                    CommonPropeties.coin = 300;
                     SceneManager.LoadScene(2);
                 }
                 return;

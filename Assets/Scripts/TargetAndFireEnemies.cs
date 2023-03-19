@@ -29,17 +29,39 @@ public class TargetAndFireEnemies : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        // just cowboy and archer can shoot all enemies, another hero can only shoot Boss, Goblin, Skeleton and Mushroom
+        if (gameObject.tag == "Archer" || gameObject.tag == "Cowboy")
         {
-            targetsInRange.Add(other.gameObject);
+            if (other.CompareTag("Boss") || other.CompareTag("Eyes") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
+            {
+                targetsInRange.Add(other.gameObject);
+            }
         }
+        if (gameObject.tag == "Tank" || gameObject.tag == "Wizard")
+        {
+            if (other.CompareTag("Boss") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
+            {
+                targetsInRange.Add(other.gameObject);
+            }
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (gameObject.tag == "Archer" || gameObject.tag == "Cowboy")
         {
-            targetsInRange.Remove(other.gameObject);
+            if (other.CompareTag("Boss") || other.CompareTag("Eyes") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
+            {
+                targetsInRange.Remove(other.gameObject);
+            }
+        }
+        if (gameObject.tag == "Tank" || gameObject.tag == "Wizard")
+        {
+            if (other.CompareTag("Boss") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
+            {
+                targetsInRange.Remove(other.gameObject);
+            }
         }
     }
 
