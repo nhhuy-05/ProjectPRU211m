@@ -7,22 +7,35 @@ using UnityEngine;
 /// </summary>
 public class TargetAndFireEnemies : MonoBehaviour
 {
-    public float fireRate = 1f;
     [SerializeField]
     public GameObject weaponPrefabs;
-
-    private float nextFireTime;
-
-    private List<GameObject> targetsInRange = new List<GameObject>();
-
-    private ParticleSystem sleepingEffect;
-
-    private AudioSource aus;
-
     public AudioClip shootingSound;
+    
+    private float fireRate;
+    private float nextFireTime;
+    private List<GameObject> targetsInRange = new List<GameObject>();
+    private ParticleSystem sleepingEffect;
+    private AudioSource aus;
 
     private void Start()
     {
+        // set the fire rate
+        if (gameObject.tag == "Archer")
+        {
+            fireRate = CommonPropeties.fireRateOfArcher;
+        }
+        if (gameObject.tag == "Cowboy")
+        {
+            fireRate = CommonPropeties.fireRateOfCowboy;
+        }
+        if (gameObject.tag == "Tank")
+        {
+            fireRate = CommonPropeties.fireRateOfTank;
+        }
+        if (gameObject.tag == "Wizard")
+        {
+            fireRate = CommonPropeties.fireRateOfWizard;
+        }
         sleepingEffect = transform.Find("SleepingEffect").GetComponent<ParticleSystem>();
         aus = GameObject.FindGameObjectsWithTag("audiosource")[0].GetComponent<AudioSource>();
     }

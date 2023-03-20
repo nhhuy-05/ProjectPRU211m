@@ -12,8 +12,8 @@ public class PlayerController : MonoBehaviour
 
     private Transform sleepingEffect;// reference to the "SleepingEffect" particle system
     private Transform Canvas;
-    private Button yesOption,noOption;
-
+    private Button yesOption, noOption;
+    private bool moneyDeducted = false;
     private bool isSleeping = true; // flag to indicate if the player is sleeping
     private Vector3 targetPosition; // position where the player is moving to
 
@@ -37,14 +37,34 @@ public class PlayerController : MonoBehaviour
 
     public void clickYes()
     {
+
         Time.timeScale = 1;
         isSleeping = false;
         Canvas.gameObject.SetActive(false);
         sleepingEffect.gameObject.GetComponent<ParticleSystem>().Stop();
-        if (gameObject.tag == "Archer")
+
+        if (!moneyDeducted) // check if the money has not been deducted yet
         {
-            CommonPropeties.coin -= CommonPropeties.coinOfArcher;
-            Debug.Log(CommonPropeties.coin);
+            if (gameObject.tag == "Archer")
+            {
+                CommonPropeties.coin -= CommonPropeties.coinOfArcher;
+                moneyDeducted = true; // set the flag to true to prevent multiple deductions
+            }
+            else if (gameObject.tag == "Cowboy")
+            {
+                CommonPropeties.coin -= CommonPropeties.coinOfCowboy;
+                moneyDeducted = true; // set the flag to true to prevent multiple deductions
+            }
+            else if (gameObject.tag == "Wizard")
+            {
+                CommonPropeties.coin -= CommonPropeties.coinOfWizard;
+                moneyDeducted = true; // set the flag to true to prevent multiple deductions
+            }
+            else if (gameObject.tag == "Tank")
+            {
+                CommonPropeties.coin -= CommonPropeties.coinOfTank;
+                moneyDeducted = true; // set the flag to true to prevent multiple deductions
+            }
         }
     }
     public void clickNo()
@@ -68,8 +88,51 @@ public class PlayerController : MonoBehaviour
                 {
                     //Pause Game
                     Time.timeScale = 0;
-                    // wake up the player
-                    Canvas.gameObject.SetActive(true);
+                    // wake up the player if have enough money
+                    if (gameObject.tag == "Archer")
+                    {
+                        if (CommonPropeties.coin >= CommonPropeties.coinOfArcher)
+                        {
+                            Canvas.gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            Time.timeScale = 1;
+                        }
+                    }
+                    else if (gameObject.tag == "Cowboy")
+                    {
+                        if (CommonPropeties.coin >= CommonPropeties.coinOfCowboy)
+                        {
+                            Canvas.gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            Time.timeScale = 1;
+                        }
+                    }
+                    else if (gameObject.tag == "Wizard")
+                    {
+                        if (CommonPropeties.coin >= CommonPropeties.coinOfWizard)
+                        {
+                            Canvas.gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            Time.timeScale = 1;
+                        }
+                    }
+                    else if (gameObject.tag == "Tank")
+                    {
+                        if (CommonPropeties.coin >= CommonPropeties.coinOfTank)
+                        {
+                            Canvas.gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            Time.timeScale = 1;
+                        }
+                    }
                     yesOption.onClick.AddListener(clickYes);
                     noOption.onClick.AddListener(clickNo);
                 }
@@ -80,8 +143,6 @@ public class PlayerController : MonoBehaviour
             // check if the player is trying to move
             if (Input.GetMouseButton(0))
             {
-
-
                 Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 // check if the click is on the player
@@ -89,8 +150,6 @@ public class PlayerController : MonoBehaviour
                 {
                     SelectedPlayer = this;
                 }
-
-
                 // round the position to the nearest tile
                 Vector3Int tilePosition = mountainTilemap.WorldToCell(mouseWorldPosition);
                 Vector3 targetWorldPosition = mountainTilemap.CellToWorld(tilePosition);
@@ -104,21 +163,11 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-
-
             // move the player towards the target position
             if (SelectedPlayer == this)
+            {
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            }
         }
-    }
-    private void Awake()
-    {
-
-    }
-
-    // deselect the player
-    public void Deselect()
-    {
-        SelectedPlayer = null;
     }
 }

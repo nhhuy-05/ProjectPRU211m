@@ -32,16 +32,16 @@ public class InitializeHeroes : MonoBehaviour
         List<Vector3Int> validTilePositions = GetValidPositions(mountainTilemap);
 
         // Create the archers.
-        createHeroes(archerPrefab, 9, validTilePositions);
+        createHeroes(archerPrefab, CommonPropeties.numberArcher, validTilePositions);
 
         // Create the cowboys.
-        createHeroes(cowboyPrefab, 8, validTilePositions);
+        createHeroes(cowboyPrefab, CommonPropeties.numberCowboy, validTilePositions);
 
         // Create the wizards.
-        createHeroes(wizardPrefab, 4, validTilePositions);
+        createHeroes(wizardPrefab, CommonPropeties.numberWizard, validTilePositions);
 
         // Create the tanks.
-        createHeroes(tankPrefab, 4, validTilePositions);
+        createHeroes(tankPrefab, CommonPropeties.numberTank, validTilePositions);
     }
 
     // method get a valid position inside the mountain area.
@@ -87,14 +87,5 @@ public class InitializeHeroes : MonoBehaviour
             gameObject.transform.position = new Vector3(gameObject.transform.position.x + 0.5f, gameObject.transform.position.y + 0.5f, 0);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
-
 }
 

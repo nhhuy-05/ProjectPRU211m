@@ -12,28 +12,47 @@ public class EnemiesController : MonoBehaviour
     // move support
     int randomPath;
     int pathIndex = 0;
-    public float moveUnitsPerSecond = 1f;
+    private float moveUnitsPerSecond;
 
     // health support
-    public int maxHealth = 100;
-    public int currentEnemyHealth;
-    public int currentVillageHouse;
+    private int maxHealth;
+    private int currentEnemyHealth;
 
     // health bar of enemies
     public HealthBarContainer healthEnemyBar;
-    // health bar of village
-    //public HealthBarContainer healthVillageBar;
-
 
     // Start is called before the first frame update
     void Start()
     {
+        // set max health and moveUnitsPerSecond of each enemy
+        if (gameObject.tag == "Boss")
+        {
+            maxHealth = CommonPropeties.healthOfBoss;
+            moveUnitsPerSecond = CommonPropeties.speedOfBoss;
+        }
+        if (gameObject.tag == "Eyes")
+        {
+            maxHealth = CommonPropeties.healthOfEyes;
+            moveUnitsPerSecond = CommonPropeties.speedOfEyes;
+        }
+        if (gameObject.tag == "Goblin")
+        {
+            maxHealth = CommonPropeties.healthOfGoblin;
+            moveUnitsPerSecond = CommonPropeties.speedOfGoblin;
+        }
+        if (gameObject.tag == "MushRoom")
+        {
+            maxHealth = CommonPropeties.healthOfMushroom;
+            moveUnitsPerSecond = CommonPropeties.speedOfMushroom;
+        }
+        if (gameObject.tag == "Skeleton")
+        {
+            maxHealth = CommonPropeties.healthOfSkeleton;
+            moveUnitsPerSecond = CommonPropeties.speedOfSkeleton;
+        }
         // set the health
         currentEnemyHealth = maxHealth;
-        currentVillageHouse = CommonPropeties.healthOfVillage;
-        
         healthEnemyBar.SetMaxHealth(maxHealth);
-        //healthVillageBar.SetMaxHealth(currentVillageHouse);
 
         // set the path
         randomPath = Random.Range(0, paths.Length);
@@ -48,19 +67,25 @@ public class EnemiesController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Arrow" || collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Arrow")
         {
-            TakeDamage(20);
+            TakeDamage(CommonPropeties.damageOfArrow);
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Bullet")
+        {
+            TakeDamage(CommonPropeties.damageOfBullet);
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.tag == "RoundShot")
         {
-            TakeDamage(50);
+            TakeDamage(CommonPropeties.damageOfRoundShot);
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.tag == "MagicBall")
         {
             // make enemy move slower a half 
+            TakeDamage(CommonPropeties.damageOfMagicBall);
             MakeSlower();
             Destroy(collision.gameObject);
         }
