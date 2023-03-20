@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
@@ -21,7 +22,7 @@ public class SpawnEnemies : MonoBehaviour
     {
         return (int)Random.Range(3, 6);
     }
-    int maxNumberOfBossFirstRound = 1;
+    int maxNumberOfBossFirstRound;
     int maxNumberOfEyesFirstRound;
     int maxNumberOfGoblinFirstRound;
     int maxNumberOfMushroomFirstRound;
@@ -60,11 +61,11 @@ public class SpawnEnemies : MonoBehaviour
     void Start()
     {
 
-        maxNumberOfBossFirstRound = 1;
-        maxNumberOfEyesFirstRound = 20;
-        maxNumberOfGoblinFirstRound = 20;
-        maxNumberOfMushroomFirstRound = 20;
-        maxNumberOfSkeletonFirstRound = 20;
+        maxNumberOfBossFirstRound = CommonPropeties.maxNumberOfBossFirstRound;
+        maxNumberOfEyesFirstRound = CommonPropeties.maxNumberOfEyesFirstRound;
+        maxNumberOfGoblinFirstRound = CommonPropeties.maxNumberOfGoblinFirstRound;
+        maxNumberOfMushroomFirstRound = CommonPropeties.maxNumberOfMushroomFirstRound;
+        maxNumberOfSkeletonFirstRound = CommonPropeties.maxNumberOfSkeletonFirstRound;
 
         //--
         prefabs = new GameObject[] { bossPrefab, eyesPrefab, goblinPrefab, mushroomPrefab, skeletonPrefab };
@@ -157,7 +158,39 @@ public class SpawnEnemies : MonoBehaviour
 
     bool isEnemiesDestroyed()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        List<GameObject> enemies = new List<GameObject>();  
+        
+        // Add Boss
+        foreach (var item in GameObject.FindGameObjectsWithTag("Boss"))
+        {
+            enemies.Add(item);
+        }
+
+        // Add Eyes
+        foreach (var item in GameObject.FindGameObjectsWithTag("Eyes"))
+        {
+            enemies.Add(item);
+        }
+
+        // Add goblin
+        foreach (var item in GameObject.FindGameObjectsWithTag("Goblin"))
+        {
+            enemies.Add(item);
+        }
+
+        // Add Mushroom
+        foreach (var item in GameObject.FindGameObjectsWithTag("Mushroom"))
+        {
+            enemies.Add(item);
+        }
+
+        // Add Skeleton
+        foreach (var item in GameObject.FindGameObjectsWithTag("Skeleton"))
+        {
+            enemies.Add(item);
+        }
+
+        //--
         if (enemies.Count() == 0)
             return true;
         return false;
