@@ -34,8 +34,54 @@ public class PanningAndZooming : MonoBehaviour
 
     void Update()
     {
+        MobileControl();
+        DestopControl();
+
+    }
+
+    void DestopControl()
+    {
         // Handle zooming
-        float zoomDelta = 0f;
+            float zoomDelta = Input.GetAxis("Mouse ScrollWheel");
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - zoomDelta * zoomSpeed, minZoomLevel, maxZoomLevel);
+        
+
+        // Handle panning
+        if (Input.GetMouseButton(0))
+        {
+            touchStartPos = Input.mousePosition;
+            Vector2 delta = touchStartPos;
+            if ((Vector2)Input.mousePosition != touchStartPos)
+            {
+               delta = (Vector2)Input.mousePosition - touchStartPos;
+            }
+            
+            Vector3 cameraPos = transform.position;
+            float cameraHalfWidth = Camera.main.orthographicSize * Camera.main.aspect;
+            if (cameraPos.x + cameraHalfWidth > rightBoundary)
+            {
+                cameraPos.x = rightBoundary - cameraHalfWidth;
+            }
+            else if (cameraPos.x - cameraHalfWidth < leftBoundary)
+            {
+                cameraPos.x = leftBoundary + cameraHalfWidth;
+            }
+            if (cameraPos.y + Camera.main.orthographicSize > topBoundary)
+            {
+                cameraPos.y = topBoundary - Camera.main.orthographicSize;
+            }
+            else if (cameraPos.y - Camera.main.orthographicSize < bottomBoundary)
+            {
+                cameraPos.y = bottomBoundary + Camera.main.orthographicSize;
+            }
+            cameraPos -= new Vector3(delta.x, delta.y, 0) * Time.deltaTime * panSpeed;
+            transform.position = cameraPos;
+        }
+    }
+    void MobileControl()
+    {
+        // Handle zooming
+        float zoomDelta = 0.5f;
         if (Input.touchCount == 2)
         {
             Vector2 touch1 = Input.GetTouch(0).position;
@@ -48,7 +94,7 @@ public class PanningAndZooming : MonoBehaviour
         Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize + zoomDelta * zoomSpeed, minZoomLevel, maxZoomLevel);
 
         // Handle panning
-        if (Input.touchCount == 1)
+        if (Input.touchCount == 1 && Input.touchCount != 2)
         {
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began)
