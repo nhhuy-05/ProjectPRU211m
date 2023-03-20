@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     private bool isSleeping = true; // flag to indicate if the player is sleeping
     private Vector3 targetPosition; // position where the player is moving to
 
-
+    //--
+    private bool isClicked = false;
     void Start()
     {
         // find the Mountain GameObject and Sleeping Effect GameObject by name
@@ -37,7 +38,10 @@ public class PlayerController : MonoBehaviour
 
     public void clickYes()
     {
+        //--
+        SelectedPlayer = this;
 
+        //
         Time.timeScale = 1;
         isSleeping = false;
         Canvas.gameObject.SetActive(false);
@@ -143,12 +147,19 @@ public class PlayerController : MonoBehaviour
             // check if the player is trying to move
             if (Input.GetMouseButton(0))
             {
+
                 Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                
+
 
                 // check if the click is on the player
                 if (GetComponent<Collider2D>().OverlapPoint(mouseWorldPosition))
                 {
                     SelectedPlayer = this;
+                    isClicked = false;
+                } else
+                {
+                    isClicked= true;
                 }
                 // round the position to the nearest tile
                 Vector3Int tilePosition = mountainTilemap.WorldToCell(mouseWorldPosition);
@@ -164,9 +175,14 @@ public class PlayerController : MonoBehaviour
 
             }
             // move the player towards the target position
-            if (SelectedPlayer == this)
+            if (SelectedPlayer == this && isClicked)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+                if (transform.position == targetPosition)
+                {
+                    isClicked = false;
+                    SelectedPlayer = null;
+                }
             }
         }
     }

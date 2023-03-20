@@ -70,4 +70,12 @@ public class CommonPropeties
     public static int coinOfWizard { get; set; } = 150; // Coin of Wizard when buy them
     public static int coinOfTank { get; set; } = 175; // Coin of Tank when buy them
 
+    //--
+
+    public static int maxNumberOfBossFirstRound { get; set; } = 1;
+    public static int maxNumberOfEyesFirstRound { get; set; } = 20;
+    public static int maxNumberOfGoblinFirstRound { get; set; } = 20;
+    public static int maxNumberOfMushroomFirstRound { get; set; } = 20;
+    public static int maxNumberOfSkeletonFirstRound { get; set; } = 20;
+
 }
