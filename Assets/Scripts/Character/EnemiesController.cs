@@ -40,7 +40,7 @@ public class EnemiesController : MonoBehaviour
             maxHealth = CommonPropeties.healthOfGoblin;
             moveUnitsPerSecond = CommonPropeties.speedOfGoblin;
         }
-        if (gameObject.tag == "MushRoom")
+        if (gameObject.tag == "Mushroom")
         {
             maxHealth = CommonPropeties.healthOfMushroom;
             moveUnitsPerSecond = CommonPropeties.speedOfMushroom;

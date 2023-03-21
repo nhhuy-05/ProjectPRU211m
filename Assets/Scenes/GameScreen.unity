@@ -11262,7 +11262,6 @@ GameObject:
   - component: {fileID: 511101885}
   - component: {fileID: 511101884}
   - component: {fileID: 511101883}
-  - component: {fileID: 511101888}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -11368,18 +11367,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &511101888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511101882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ade9fe166fa434cbb38aaf33ef7841, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &544649008
 GameObject:
   m_ObjectHideFlags: 0
@@ -33786,6 +33773,7 @@ GameObject:
   - component: {fileID: 710963395}
   - component: {fileID: 710963394}
   - component: {fileID: 710963397}
+  - component: {fileID: 710963398}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -33828,7 +33816,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 18.1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -33851,8 +33839,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710963393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.9, y: -20.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33866,7 +33854,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710963393}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07e64c28d43a4eb42bcfe23c0621ca32, type: 3}
   m_Name: 
@@ -33875,6 +33863,22 @@ MonoBehaviour:
   zoomSpeed: 1
   panSpeed: 0.1
   borderSize: 10
+--- !u!114 &710963398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710963393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1194093bec31e488cb1aa6b979fab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomStep: 1
+  minCamSize: 15
+  maxCamSize: 18.1
+  tilemapRenderer: {fileID: 0}
 --- !u!1 &715748712
 GameObject:
   m_ObjectHideFlags: 0
@@ -34466,8 +34470,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -95.70996, y: -28.130005}
+  m_SizeDelta: {x: 126.59, y: 56.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904492016
 MonoBehaviour:
@@ -40535,8 +40539,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -142.30518, y: 541.15}
-  m_SizeDelta: {x: 705.5712, y: 106.3588}
+  m_AnchoredPosition: {x: -142.30518, y: 538.63}
+  m_SizeDelta: {x: 705.57, y: 101.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1628689720
 MonoBehaviour:
@@ -40798,7 +40802,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 4483724069128155163, guid: 06cffef9133992f4bab707fdd78a5b15, type: 3}
   eyesPrefab: {fileID: 3714496528426503049, guid: a04c0a1d99712b54b9b9a23dafb8e8ef, type: 3}
   goblinPrefab: {fileID: 3527214733459390005, guid: b07b4af1525ccd24d80d9d1e1d468884, type: 3}
-  mushroomPrefab: {fileID: 5615351709504868984, guid: ce789479957da3e41a2f34a26a804b6f, type: 3}
+  mushroomPrefab: {fileID: 7093225821596173197, guid: 890177d3179cb7048857c2507a3fc5ee, type: 3}
   skeletonPrefab: {fileID: 1269541528396803840, guid: bfb6e83e58261044e87836c36971fe7b, type: 3}
   timeSpawn: 1
   spawnRateReduction: 0.9
