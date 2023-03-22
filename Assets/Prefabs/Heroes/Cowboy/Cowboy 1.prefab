@@ -98,6 +98,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BodyCowboy
       objectReference: {fileID: 0}
+    - target: {fileID: 2377841653295337472, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2946449095094932637, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -145,6 +149,14 @@ PrefabInstance:
     - target: {fileID: 3118402688189356789, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
       propertyPath: fireRate
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625484667375956510, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
+      propertyPath: m_text
+      value: "Do you want to use 125 coins\n to awake the Cowboy ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625484667375956510, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5319127374736483451, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
       propertyPath: m_LocalScale.x

@@ -146,6 +146,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BodyArcher
       objectReference: {fileID: 0}
+    - target: {fileID: 3763299702026109467, guid: 6ebaee20c61731e41b62a74a8e272b9b, type: 3}
+      propertyPath: m_text
+      value: "Do you want to use 125 coins \nto awake the Archer ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763299702026109467, guid: 6ebaee20c61731e41b62a74a8e272b9b, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763299702026109467, guid: 6ebaee20c61731e41b62a74a8e272b9b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+    - target: {fileID: 3763299702026109467, guid: 6ebaee20c61731e41b62a74a8e272b9b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571105273657526243, guid: 6ebaee20c61731e41b62a74a8e272b9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7429250907081201748, guid: 6ebaee20c61731e41b62a74a8e272b9b, type: 3}
       propertyPath: m_Name
       value: Body
