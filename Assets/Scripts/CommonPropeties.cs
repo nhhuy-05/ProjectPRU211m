@@ -19,10 +19,10 @@ public class CommonPropeties
     public static float speedOfGoblin { get; set; } = 2f; // Speed of Goblin
 
     // Damage of Weapons on Enemies
-    public static int damageOfArrow { get; set; } = 20; // Damage of Arrow
-    public static int damageOfBullet { get; set; } = 20; // Damage of Bullet
-    public static int damageOfRoundShot { get; set; } = 50; // Damage of RoundShot
-    public static int damageOfMagicBall { get; set; } = 5; // Damage of MagicBall
+    public static int damageOfArrow { get; set; } = 100; // Damage of Arrow
+    public static int damageOfBullet { get; set; } = 100; // Damage of Bullet
+    public static int damageOfRoundShot { get; set; } = 100; // Damage of RoundShot
+    public static int damageOfMagicBall { get; set; } = 100; // Damage of MagicBall
 
     // Damage of Enemies on Village
     public static int damageOfBoss { get; set; } = 5; // Damage of Boss on Village
@@ -72,10 +72,10 @@ public class CommonPropeties
 
     //--
 
-    public static int maxNumberOfBossFirstRound { get; set; } = 1;
-    public static int maxNumberOfEyesFirstRound { get; set; } = 20;
-    public static int maxNumberOfGoblinFirstRound { get; set; } = 20;
-    public static int maxNumberOfMushroomFirstRound { get; set; } = 20;
-    public static int maxNumberOfSkeletonFirstRound { get; set; } = 20;
+    public static int maxNumberOfBossFirstWave { get; set; } = 2;
+    public static int maxNumberOfEyesFirstWave { get; set; } = 8;
+    public static int maxNumberOfGoblinFirstWave { get; set; } = 9;
+    public static int maxNumberOfMushroomFirstWave { get; set; } = 10;
+    public static int maxNumberOfSkeletonFirstWave { get; set; } = 7;
 
 }
