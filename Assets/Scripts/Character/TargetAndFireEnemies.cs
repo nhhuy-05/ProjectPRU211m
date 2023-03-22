@@ -10,7 +10,7 @@ public class TargetAndFireEnemies : MonoBehaviour
     [SerializeField]
     public GameObject weaponPrefabs;
     public AudioClip shootingSound;
-    
+
     private float fireRate;
     private float nextFireTime;
     private List<GameObject> targetsInRange = new List<GameObject>();
@@ -57,7 +57,7 @@ public class TargetAndFireEnemies : MonoBehaviour
                 targetsInRange.Add(other.gameObject);
             }
         }
-        
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -85,7 +85,10 @@ public class TargetAndFireEnemies : MonoBehaviour
             if (targetsInRange.Count > 0 && Time.time >= nextFireTime)
             {
                 GameObject target = targetsInRange[0];
-                FireAt(target.transform.position);
+                if (target != null)
+                {
+                    FireAt(target.transform.position);
+                }
                 nextFireTime = Time.time + fireRate;
             }
         }
