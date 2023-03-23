@@ -20,7 +20,7 @@ public class LosingScreenScript : MonoBehaviour
         {
             Notification.text = "Game Over!\nYour Score: " + CommonPropeties.score;
         }
-        Invoke("loadMainMenu", 2f);
+        Invoke("loadMainMenu", 5f);
     }
     public void loadMainMenu()
     {

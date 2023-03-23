@@ -2057,6 +2057,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07ed14b17efd3f4eaaf7bdbf9d4b838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnStart: {fileID: 557779845}
+  btnResume: {fileID: 735720197}
 --- !u!1 &1059150275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,6 +2623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1642079591}
   - component: {fileID: 1642079592}
+  - component: {fileID: 1642079593}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -2695,13 +2698,38 @@ MonoBehaviour:
   m_FillRect: {fileID: 459589243}
   m_HandleRect: {fileID: 250842923}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: -80
+  m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1642079593}
+        m_TargetAssemblyTypeName: SettingVolume, Assembly-CSharp
+        m_MethodName: SetVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1642079593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642079590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabed84e4723cf84cbbb02818573de24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 56c33195efc685340a0ca238db0b3df1, type: 2}
 --- !u!1 &1673395662
 GameObject:
   m_ObjectHideFlags: 0
