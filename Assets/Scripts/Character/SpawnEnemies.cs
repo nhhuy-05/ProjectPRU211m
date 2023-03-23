@@ -70,7 +70,7 @@ public class SpawnEnemies : MonoBehaviour
 
         //--
         prefabs = new GameObject[] { bossPrefab, eyesPrefab, goblinPrefab, mushroomPrefab, skeletonPrefab };
-        
+
         // Set the number of enemies to spawn in the first wave
         enemiesTotalWave = calculateEnemiesTotalWave();
         // Initialize the next spawn time based on the min time spawn
@@ -133,8 +133,8 @@ public class SpawnEnemies : MonoBehaviour
                     enemiesTotalWave = calculateEnemiesTotalWave();
                     SaveLoad.SaveHeroes();
                     SaveLoad.SaveData();
-                    isSpawnStart = true;
                     CommonPropeties.currentWave++; // advance to wave 4
+                    isSpawnStart = true;
                 }
 
                 float waitTime = 5f;
@@ -175,12 +175,11 @@ public class SpawnEnemies : MonoBehaviour
         if (CommonPropeties.currentWave == 3)
         {
             maxNumberOfBossFirstRound = (int)Math.Round(CommonPropeties.maxNumberOfBossFirstWave * Math.Pow(1.25, CommonPropeties.currentRound));
-            Debug.Log("Boss spawn rate increased to " + maxNumberOfBossFirstRound);
-            currentNumberOfBoss = 0;
-            Debug.Log("Boss spawn rate increased to " + maxNumberOfBossFirstRound);
             Debug.Log("Current boss number: " + currentNumberOfBoss);
             Debug.Log("Current wave: " + CommonPropeties.currentWave);
+            currentNumberOfBoss = 0;
         }
+        else { maxNumberOfBossFirstRound = 0; }
 
         // Reduce the time between spawns
         if (CommonPropeties.currentRound % 5 == 0)
@@ -194,12 +193,13 @@ public class SpawnEnemies : MonoBehaviour
     {
         GameObject prefabToSpawn = null;
         int randomPrefab = UnityEngine.Random.Range(0, prefabs.Length);
-
+        
         switch (randomPrefab)
         {
             case 0:
-                if (currentNumberOfBoss < maxNumberOfBossFirstRound && CommonPropeties.currentWave == 3)
+                if (currentNumberOfBoss < maxNumberOfBossFirstRound && CommonPropeties.currentWave >=3 )
                 {
+                    Debug.Log("Spawning boss");
                     prefabToSpawn = bossPrefab;
                     currentNumberOfBoss++;
                 }

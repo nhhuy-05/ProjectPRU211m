@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Transform Canvas;
     private Button yesOption, noOption;
     private bool moneyDeducted = false;
-    private bool isSleeping = true; // flag to indicate if the player is sleeping
+    //private bool isSleeping = true; // flag to indicate if the player is sleeping
     private Vector3 targetPosition; // position where the player is moving to
 
     //--
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
         //
         Time.timeScale = 1;
-        isSleeping = false;
+        //isSleeping = false;
         Canvas.gameObject.SetActive(false);
         sleepingEffect.gameObject.GetComponent<ParticleSystem>().Stop();
 
@@ -80,13 +80,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // check if the player is sleeping
-        if (isSleeping)
+        if (sleepingEffect.gameObject.GetComponent<ParticleSystem>().isPlaying == true)
         {
             // check if the player is clicked on
             if (Input.GetMouseButton(0))
             {
                 Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+                
                 // check if the click is on the player
                 if (GetComponent<Collider2D>().OverlapPoint(mouseWorldPosition))
                 {

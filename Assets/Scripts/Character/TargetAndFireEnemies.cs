@@ -20,19 +20,19 @@ public class TargetAndFireEnemies : MonoBehaviour
     private void Start()
     {
         // set the fire rate
-        if (gameObject.tag == "Archer")
+        if (gameObject.tag == "BodyArcher")
         {
             fireRate = CommonPropeties.fireRateOfArcher;
         }
-        if (gameObject.tag == "Cowboy")
+        if (gameObject.tag == "BodyCowboy")
         {
             fireRate = CommonPropeties.fireRateOfCowboy;
         }
-        if (gameObject.tag == "Tank")
+        if (gameObject.tag == "BodyTank")
         {
             fireRate = CommonPropeties.fireRateOfTank;
         }
-        if (gameObject.tag == "Wizard")
+        if (gameObject.tag == "BodyWizard")
         {
             fireRate = CommonPropeties.fireRateOfWizard;
         }
@@ -43,18 +43,20 @@ public class TargetAndFireEnemies : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // just cowboy and archer can shoot all enemies, another hero can only shoot Boss, Goblin, Skeleton and Mushroom
-        if (gameObject.tag == "Archer" || gameObject.tag == "Cowboy")
+        if (gameObject.tag == "BodyArcher" || gameObject.tag == "BodyCowboy")
         {
             if (other.CompareTag("Boss") || other.CompareTag("Eyes") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
             {
                 targetsInRange.Add(other.gameObject);
+                Debug.Log("Add " + other.gameObject.name + " to the list");
             }
         }
-        if (gameObject.tag == "Tank" || gameObject.tag == "Wizard")
+        if (gameObject.tag == "BodyTank" || gameObject.tag == "BodyWizard")
         {
             if (other.CompareTag("Boss") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
             {
                 targetsInRange.Add(other.gameObject);
+                Debug.Log("Add " + other.gameObject.name + " to the list");
             }
         }
 
@@ -62,18 +64,20 @@ public class TargetAndFireEnemies : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (gameObject.tag == "Archer" || gameObject.tag == "Cowboy")
+        if (gameObject.tag == "BodyArcher" || gameObject.tag == "BodyCowboy")
         {
             if (other.CompareTag("Boss") || other.CompareTag("Eyes") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
             {
                 targetsInRange.Remove(other.gameObject);
+                Debug.Log("Remove " + other.gameObject.name + " from the list");
             }
         }
-        if (gameObject.tag == "Tank" || gameObject.tag == "Wizard")
+        if (gameObject.tag == "BodyTank" || gameObject.tag == "BodyWizard")
         {
             if (other.CompareTag("Boss") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
             {
                 targetsInRange.Remove(other.gameObject);
+                Debug.Log("Remove " + other.gameObject.name + " from the list");
             }
         }
     }
@@ -125,7 +129,7 @@ public class TargetAndFireEnemies : MonoBehaviour
         //    // set the velocity of the weapon to the final direction vector
         //    weapon.GetComponent<Rigidbody2D>().velocity = finalDirection.normalized * 10f;
         //}
-        if (gameObject.tag == "Wizard" || gameObject.tag == "Archer" || gameObject.tag == "Cowboy" || gameObject.tag == "Tank")
+        if (gameObject.tag == "BodyWizard" || gameObject.tag == "BodyArcher" || gameObject.tag == "BodyCowboy" || gameObject.tag == "BodyTank")
         {
             weapon.GetComponent<Rigidbody2D>().velocity = direction * 100f;
         }
@@ -137,11 +141,11 @@ public class TargetAndFireEnemies : MonoBehaviour
         }
 
         // rotate game object to face the targe if gameobject is archer and wizard
-        if (gameObject.tag == "Archer" || gameObject.tag == "Wizard" || gameObject.tag == "Tank")
+        if (gameObject.tag == "BodyArcher" || gameObject.tag == "BodyWizard" || gameObject.tag == "BodyTank")
         {
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-        if (gameObject.tag == "Cowboy")
+        if (gameObject.tag == "BodyCowboy")
         {
             // Get game object child 1 of game object
             GameObject child1 = gameObject.transform.GetChild(1).gameObject;
