@@ -10,13 +10,13 @@ public class PauseMenu : MonoBehaviour
     private Button PauseButton;
     private Button ResumeButton;
     private Button MenuButton;
-    private Button QuitButton;
+    private Button SaveAndQuitButton;
     private void Start()
     {
         PauseButton = gameObject.transform.Find("PauseButton").GetComponent<Button>();
         ResumeButton = PauseMenuUI.gameObject.transform.Find("Resume").GetComponent<Button>();
         MenuButton = PauseMenuUI.gameObject.transform.Find("Menu").GetComponent<Button>();
-        QuitButton = PauseMenuUI.gameObject.transform.Find("Quit").GetComponent<Button>();
+        SaveAndQuitButton = PauseMenuUI.gameObject.transform.Find("SaveAndQuit").GetComponent<Button>();
     }
     void Update()
     {
@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
             PauseButton.gameObject.SetActive(false);
             ResumeButton.onClick.AddListener(Resume);
             MenuButton.onClick.AddListener(Menu);
-            QuitButton.onClick.AddListener(Quit);
+            SaveAndQuitButton.onClick.AddListener(SaveAndQuit);
         }
         else
         {
@@ -51,9 +51,9 @@ public class PauseMenu : MonoBehaviour
         GoToMainMenu();
         GameIsPaused = false;
     }
-    void Quit()
+    void SaveAndQuit()
     {
-        Application.Quit();
+        //Application.Quit();
     }
     public void GoToMainMenu()
     {

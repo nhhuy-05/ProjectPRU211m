@@ -74,6 +74,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Body
       objectReference: {fileID: 0}
+    - target: {fileID: 321140804399635355, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
+      propertyPath: m_TagString
+      value: BodyCowboy
+      objectReference: {fileID: 0}
     - target: {fileID: 661324446930181912, guid: 07b8222f612817e4f9b5a5fff7852f2e, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
