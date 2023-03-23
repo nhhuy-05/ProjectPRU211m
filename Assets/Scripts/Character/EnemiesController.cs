@@ -95,24 +95,29 @@ public class EnemiesController : MonoBehaviour
             if (gameObject.tag == "Boss")
             {
                 CommonPropeties.coin += CommonPropeties.coinOfBoss;
+                CommonPropeties.currentScore += CommonPropeties.scoreOfBoss;
             }
             if (gameObject.tag == "Eyes")
             {
                 CommonPropeties.coin += CommonPropeties.coinOfEyes;
+                CommonPropeties.currentScore += CommonPropeties.scoreOfEyes;
             }
             if (gameObject.tag == "Goblin")
             {
                 CommonPropeties.coin += CommonPropeties.coinOfGoblin;
+                CommonPropeties.currentScore += CommonPropeties.scoreOfGoblin;
 
             }
             if (gameObject.tag == "MushRoom")
             {
                 CommonPropeties.coin += CommonPropeties.coinOfMushroom;
+                CommonPropeties.currentScore += CommonPropeties.scoreOfMushroom;
 
             }
             if (gameObject.tag == "Skeleton")
             {
                 CommonPropeties.coin += CommonPropeties.coinOfSkeleton;
+                CommonPropeties.currentScore += CommonPropeties.scoreOfSkeleton;
             }
             Destroy(gameObject);
         }
@@ -178,6 +183,9 @@ public class EnemiesController : MonoBehaviour
                 if (CommonPropeties.healthOfVillage <= 0)
                 {
                     CommonPropeties.healthOfVillage = 100;
+                    CommonPropeties.score = CommonPropeties.currentScore;
+                    SaveLoad.SaveScore(CommonPropeties.currentScore);
+                    CommonPropeties.currentScore = 0;
                     CommonPropeties.coin = 300;
                     SceneManager.LoadScene(2);
                 }

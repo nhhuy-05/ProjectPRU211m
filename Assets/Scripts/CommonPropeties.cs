@@ -10,6 +10,17 @@ public class CommonPropeties
     // Common properties
     public static int coin { get; set; } = 1000; // Coin
     public static int healthOfVillage { get; set; } = 100; // Health of Village
+    public static int highestScore { get; set; } = 0; // Highest score
+    public static int score { get; set; } = 0; // Score
+    public static int currentScore { get; set; } = 0; // Current score
+
+    // Score of each enemy
+    public static int scoreOfBoss { get; set; } = 50;
+    public static int scoreOfEyes { get; set; } = 20;
+    public static int scoreOfGoblin { get; set; } = 30;
+    public static int scoreOfMushroom { get; set; } = 20;
+    public static int scoreOfSkeleton { get; set; } = 20;
+    
 
     // Speed of the enemies
     public static float speedOfBoss { get; set; } = 5f; // Speed of Boss
@@ -25,11 +36,11 @@ public class CommonPropeties
     public static int damageOfMagicBall { get; set; } = 100; // Damage of MagicBall
 
     // Damage of Enemies on Village
-    public static int damageOfBoss { get; set; } = 5; // Damage of Boss on Village
-    public static int damageOfEyes { get; set; } = 1; // Damage of Eyes on Village
-    public static int damageOfMushroom { get; set; } = 1; // Damage of Mushroom on Village
-    public static int damageOfSkeleton { get; set; } = 2; // Damage of Skeleton on Village
-    public static int damageOfGoblin { get; set; } = 2; // Damage of Goblin on Village
+    public static int damageOfBoss { get; set; } = 25; // Damage of Boss on Village
+    public static int damageOfEyes { get; set; } = 25; // Damage of Eyes on Village
+    public static int damageOfMushroom { get; set; } = 25; // Damage of Mushroom on Village
+    public static int damageOfSkeleton { get; set; } = 25; // Damage of Skeleton on Village
+    public static int damageOfGoblin { get; set; } = 25; // Damage of Goblin on Village
 
     // Health of Enemies
     public static int healthOfBoss { get; set; } = 175; // Health of Boss
