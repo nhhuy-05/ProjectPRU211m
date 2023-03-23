@@ -13,6 +13,8 @@ public class CommonPropeties
     public static int highestScore { get; set; } = 0; // Highest score
     public static int score { get; set; } = 0; // Score
     public static int currentScore { get; set; } = 0; // Current score
+    public static int currentWave { get; set; } = 3; // Current wave
+    public static int currentRound { get; set; } = 1; // Current round
 
     // Score of each enemy
     public static int scoreOfBoss { get; set; } = 50;
@@ -43,7 +45,7 @@ public class CommonPropeties
     public static int damageOfGoblin { get; set; } = 25; // Damage of Goblin on Village
 
     // Health of Enemies
-    public static int healthOfBoss { get; set; } = 175; // Health of Boss
+    public static int healthOfBoss { get; set; } = 1000; // Health of Boss
     public static int healthOfEyes { get; set; } = 75; // Health of Eyes
     public static int healthOfMushroom { get; set; } = 150; // Health of Mushroom
     public static int healthOfSkeleton { get; set; } = 125; // Health of Skeleton

@@ -94,6 +94,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Body
       objectReference: {fileID: 0}
+    - target: {fileID: 2208419433552732193, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
+      propertyPath: m_TagString
+      value: BodyWizard
+      objectReference: {fileID: 0}
     - target: {fileID: 3435966758187220513, guid: b06d2bff6e201a3448c91dee54e12aca, type: 3}
       propertyPath: fireRate
       value: 3

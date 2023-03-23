@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,6 @@ public class SpawnEnemies : MonoBehaviour
     GameObject[] prefabs;
 
     //---
-
-    int RandomNumberOfEnemies()
-    {
-        return (int)Random.Range(3, 6);
-    }
     int maxNumberOfBossFirstRound;
     int maxNumberOfEyesFirstRound;
     int maxNumberOfGoblinFirstRound;
@@ -39,9 +35,6 @@ public class SpawnEnemies : MonoBehaviour
     int currentNumberOfMushroom = 0;
     int currentNumberOfSkeleton = 0;
 
-    //----
-    int currentRound = 1;
-    int currentWave = 1;
     int enemiesTotalWave = 0;
 
     int maxWavesPerRound = 3;
@@ -59,20 +52,27 @@ public class SpawnEnemies : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Load Data
+        SaveLoad.LoadData();
         // Use a coroutine to display the TextMesh of Round, then Wave, and then wait for 5s before starting the enemy spawning
         StartCoroutine(DisplayTextAfterDelay());
+        int m = 0;
 
-        maxNumberOfBossFirstRound = 0;
-        maxNumberOfEyesFirstRound = CommonPropeties.maxNumberOfEyesFirstWave;
-        maxNumberOfGoblinFirstRound = CommonPropeties.maxNumberOfGoblinFirstWave;
-        maxNumberOfMushroomFirstRound = CommonPropeties.maxNumberOfMushroomFirstWave;
-        maxNumberOfSkeletonFirstRound = CommonPropeties.maxNumberOfSkeletonFirstWave;
+        if (CommonPropeties.currentWave == 1) m = 3;
+        if (CommonPropeties.currentWave == 2) m = 2;
+        if (CommonPropeties.currentWave == 3) m = 1;
+
+        maxNumberOfBossFirstRound = (int)Math.Round(CommonPropeties.maxNumberOfBossFirstWave * Math.Pow(1.25, CommonPropeties.currentRound));
+        maxNumberOfEyesFirstRound = (int)Math.Round(CommonPropeties.maxNumberOfEyesFirstWave * Math.Pow(1.25, 3 * CommonPropeties.currentRound - m));
+        maxNumberOfGoblinFirstRound = (int)Math.Round(CommonPropeties.maxNumberOfGoblinFirstWave * Math.Pow(1.25, 3 * CommonPropeties.currentRound - m));
+        maxNumberOfMushroomFirstRound = (int)Math.Round(CommonPropeties.maxNumberOfMushroomFirstWave * Math.Pow(1.25, 3 * CommonPropeties.currentRound - m));
+        maxNumberOfSkeletonFirstRound = (int)Math.Round(CommonPropeties.maxNumberOfSkeletonFirstWave * Math.Pow(1.25, 3 * CommonPropeties.currentRound - m));
 
         //--
         prefabs = new GameObject[] { bossPrefab, eyesPrefab, goblinPrefab, mushroomPrefab, skeletonPrefab };
-
+        
         // Set the number of enemies to spawn in the first wave
-        enemiesTotalWave = maxNumberOfBossFirstRound + maxNumberOfEyesFirstRound + maxNumberOfGoblinFirstRound + maxNumberOfMushroomFirstRound + maxNumberOfSkeletonFirstRound;
+        enemiesTotalWave = calculateEnemiesTotalWave();
         // Initialize the next spawn time based on the min time spawn
         _nextSpawnTime = Time.time + timeSpawn;
 
@@ -101,10 +101,11 @@ public class SpawnEnemies : MonoBehaviour
             _enemiesSpawned = 0;
             isSpawnStart = false;
 
-            if (currentWave > maxWavesPerRound)
+
+            if (CommonPropeties.currentWave > maxWavesPerRound || CommonPropeties.currentWave ==3)
             {
-                currentRound++;
-                currentWave = 1;
+                CommonPropeties.currentRound++;
+                CommonPropeties.currentWave = 1;
                 // Increase enemy spawn rates for next round
                 increaseEnemySpawnRates();
 
@@ -114,23 +115,28 @@ public class SpawnEnemies : MonoBehaviour
             else
             {
                 Debug.Log("Next wave");
-                currentWave++;
+                CommonPropeties.currentWave++;
                 StartCoroutine(DisplayWave());
 
-                if (currentWave == 2)
+                if (CommonPropeties.currentWave == 2)
                 {
                     increaseEnemySpawnRates();
+                    enemiesTotalWave = calculateEnemiesTotalWave();
+                    SaveLoad.SaveHeroes();
+                    SaveLoad.SaveData();
                     isSpawnStart = true;
                 }
 
-                if (currentWave == 3)
+                if (CommonPropeties.currentWave == 3)
                 {
                     increaseEnemySpawnRates();
+                    enemiesTotalWave = calculateEnemiesTotalWave();
+                    SaveLoad.SaveHeroes();
+                    SaveLoad.SaveData();
                     isSpawnStart = true;
-                    currentWave++; // advance to wave 4
+                    CommonPropeties.currentWave++; // advance to wave 4
                 }
 
-                enemiesTotalWave = calculateEnemiesTotalWave();
                 float waitTime = 5f;
                 StartCoroutine(WaitForNextWave(waitTime));
             }
@@ -145,11 +151,18 @@ public class SpawnEnemies : MonoBehaviour
 
     private int calculateEnemiesTotalWave()
     {
-        return maxNumberOfBossFirstRound + maxNumberOfEyesFirstRound + maxNumberOfGoblinFirstRound + maxNumberOfMushroomFirstRound + maxNumberOfSkeletonFirstRound;
+        // boss just spawns once per round in wave 3
+        if (CommonPropeties.currentWave == 3)
+        {
+            Debug.Log("Boss wave");
+            return maxNumberOfBossFirstRound + maxNumberOfEyesFirstRound + maxNumberOfGoblinFirstRound + maxNumberOfMushroomFirstRound + maxNumberOfSkeletonFirstRound;
+        }
+        else return maxNumberOfEyesFirstRound + maxNumberOfGoblinFirstRound + maxNumberOfMushroomFirstRound + maxNumberOfSkeletonFirstRound;
     }
 
     private void increaseEnemySpawnRates()
     {
+        Debug.Log("Increasing enemy spawn rates");
         maxNumberOfEyesFirstRound = (int)Mathf.Round(maxNumberOfEyesFirstRound * 1.25f);
         currentNumberOfEyes = 0;
         maxNumberOfGoblinFirstRound = (int)Mathf.Round(maxNumberOfGoblinFirstRound * 1.25f);
@@ -158,15 +171,21 @@ public class SpawnEnemies : MonoBehaviour
         currentNumberOfMushroom = 0;
         maxNumberOfSkeletonFirstRound = (int)Mathf.Round(maxNumberOfSkeletonFirstRound * 1.25f);
         currentNumberOfSkeleton = 0;
+        // check if current wave is 3, if so, increase the spawn rate of the boss
+        if (CommonPropeties.currentWave == 3)
+        {
+            maxNumberOfBossFirstRound = (int)Math.Round(CommonPropeties.maxNumberOfBossFirstWave * Math.Pow(1.25, CommonPropeties.currentRound));
+            Debug.Log("Boss spawn rate increased to " + maxNumberOfBossFirstRound);
+            currentNumberOfBoss = 0;
+            Debug.Log("Boss spawn rate increased to " + maxNumberOfBossFirstRound);
+            Debug.Log("Current boss number: " + currentNumberOfBoss);
+            Debug.Log("Current wave: " + CommonPropeties.currentWave);
+        }
 
-        if (currentRound % 5 == 0)
+        // Reduce the time between spawns
+        if (CommonPropeties.currentRound % 5 == 0)
         {
             timeSpawn *= spawnRateReduction;
-            if (currentRound > 5)
-            {
-                maxNumberOfBossFirstRound = (int)Mathf.Round(maxNumberOfBossFirstRound * 1.25f);
-                currentNumberOfBoss = 0;
-            }
         }
     }
 
@@ -174,12 +193,12 @@ public class SpawnEnemies : MonoBehaviour
     private GameObject spawnRandomPrefab()
     {
         GameObject prefabToSpawn = null;
-        int randomPrefab = Random.Range(0, prefabs.Length);
+        int randomPrefab = UnityEngine.Random.Range(0, prefabs.Length);
 
         switch (randomPrefab)
         {
             case 0:
-                if (currentNumberOfBoss < maxNumberOfBossFirstRound && currentRound >= 5)
+                if (currentNumberOfBoss < maxNumberOfBossFirstRound && CommonPropeties.currentWave == 3)
                 {
                     prefabToSpawn = bossPrefab;
                     currentNumberOfBoss++;
@@ -230,6 +249,7 @@ public class SpawnEnemies : MonoBehaviour
         GameObject prefabToSpawn = spawnRandomPrefab(); // Spawn 1 enemy
         if (prefabToSpawn != null && _enemiesSpawned < enemiesTotalWave)
             _enemiesSpawned++;
+        Debug.Log("Spawned: " + _enemiesSpawned);
     }
 
     // check if all enemies're destroyed
@@ -241,6 +261,7 @@ public class SpawnEnemies : MonoBehaviour
         foreach (var item in GameObject.FindGameObjectsWithTag("Boss"))
         {
             enemies.Add(item);
+            Debug.Log("Boss");
         }
 
         // Add Eyes
@@ -283,7 +304,7 @@ public class SpawnEnemies : MonoBehaviour
 
     IEnumerator DisplayWave()
     {
-        Notification.text = "Wave " + currentWave;
+        Notification.text = "Wave " + CommonPropeties.currentWave;
         Panel.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         Panel.gameObject.SetActive(false);
@@ -293,7 +314,7 @@ public class SpawnEnemies : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         Panel.gameObject.SetActive(true);
-        Notification.text = "Round " + currentRound;
+        Notification.text = "Round " + CommonPropeties.currentRound;
         yield return new WaitForSeconds(2f);
         Panel.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
@@ -303,6 +324,8 @@ public class SpawnEnemies : MonoBehaviour
         Notification.text = "Start";
         yield return new WaitForSeconds(0.5f);
         Panel.gameObject.SetActive(false);
+        SaveLoad.SaveHeroes();
+        SaveLoad.SaveData();
         isSpawnStart = true;
     }
 }

@@ -148,6 +148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Body
       objectReference: {fileID: 0}
+    - target: {fileID: 6998295150202007367, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
+      propertyPath: m_TagString
+      value: BodyTank
+      objectReference: {fileID: 0}
     - target: {fileID: 7157754836551391492, guid: 3e0f34a5a4814c342855bffaf1462992, type: 3}
       propertyPath: m_LocalScale.x
       value: 2

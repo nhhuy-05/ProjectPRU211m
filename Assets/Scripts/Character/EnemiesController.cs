@@ -186,7 +186,9 @@ public class EnemiesController : MonoBehaviour
                     CommonPropeties.score = CommonPropeties.currentScore;
                     SaveLoad.SaveScore(CommonPropeties.currentScore);
                     CommonPropeties.currentScore = 0;
-                    CommonPropeties.coin = 300;
+                    CommonPropeties.currentRound = 1;
+                    CommonPropeties.currentWave = 1;
+                    CommonPropeties.coin = 1000;
                     SceneManager.LoadScene(2);
                 }
                 return;
