@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
@@ -22,26 +23,78 @@ public class InitializeHeroes : MonoBehaviour
     // The tilemap that represents the mountain area.
     Tilemap mountainTilemap;
 
+    // List of all the heroes and sleeping state of them
+    List<Vector3> listHeroesPositon;
+    List<bool> listHeroesSleeping;
+
     // Start is called before the first frame update
     void Start()
     {
+        // Get list from json
+        listHeroesPositon = SaveLoad.LoadHeroesPosition();
+        Debug.Log("listHeroesPositon.Count: " + listHeroesPositon.Count);
+        listHeroesSleeping = SaveLoad.LoadHeroesIsSleeping();
+        Debug.Log("listHeroesSleeping.Count: " + listHeroesSleeping.Count);
+
         // Get the tilemap that represents the mountain area.
         mountainTilemap = GameObject.Find("Mountain").GetComponent<Tilemap>();
 
         // Get the valid positions inside the mountain area.
         List<Vector3Int> validTilePositions = GetValidPositions(mountainTilemap);
 
-        // Create the archers.
-        createHeroes(archerPrefab, CommonPropeties.numberArcher, validTilePositions);
+        // check if the list is empty, if it is, then initialize the heroes
+        if (listHeroesPositon.Count == 0 || listHeroesSleeping.Count == 0)
+        {
+            // Create the archers.
+            createHeroes(archerPrefab, CommonPropeties.numberArcher, validTilePositions);
 
-        // Create the cowboys.
-        createHeroes(cowboyPrefab, CommonPropeties.numberCowboy, validTilePositions);
+            // Create the cowboys.
+            createHeroes(cowboyPrefab, CommonPropeties.numberCowboy, validTilePositions);
 
-        // Create the wizards.
-        createHeroes(wizardPrefab, CommonPropeties.numberWizard, validTilePositions);
+            // Create the wizards.
+            createHeroes(wizardPrefab, CommonPropeties.numberWizard, validTilePositions);
 
-        // Create the tanks.
-        createHeroes(tankPrefab, CommonPropeties.numberTank, validTilePositions);
+            // Create the tanks.
+            createHeroes(tankPrefab, CommonPropeties.numberTank, validTilePositions);
+        }
+        else
+        {
+            // Create the cowboys.
+            createHeroes(cowboyPrefab, 0, CommonPropeties.numberCowboy, listHeroesPositon, listHeroesSleeping);
+
+            // Create the archers.
+            createHeroes(archerPrefab, CommonPropeties.numberCowboy, CommonPropeties.numberCowboy + CommonPropeties.numberArcher, listHeroesPositon, listHeroesSleeping);
+
+            // Create the tanks.
+            createHeroes(tankPrefab, CommonPropeties.numberCowboy + CommonPropeties.numberArcher, CommonPropeties.numberCowboy + CommonPropeties.numberArcher + CommonPropeties.numberTank, listHeroesPositon, listHeroesSleeping);
+
+            // Create the wizard.
+            createHeroes(wizardPrefab, CommonPropeties.numberCowboy + CommonPropeties.numberArcher + CommonPropeties.numberTank, CommonPropeties.numberCowboy + CommonPropeties.numberArcher + CommonPropeties.numberTank + CommonPropeties.numberWizard, listHeroesPositon, listHeroesSleeping);
+        }
+
+    }
+
+    public void createHeroes(GameObject prefab, int from, int to, List<Vector3> listHeroesPositon, List<bool> listHeroesSleeping)
+    {
+        for (int i = from; i < to; i++)
+        {
+            // Instantiate the hero.
+            GameObject hero = Instantiate(prefab, listHeroesPositon.ElementAt(i), Quaternion.identity);
+
+            // Get the sleeping effect of the hero.
+            ParticleSystem sleepingEffect = hero.transform.Find("Body").gameObject.transform.Find("SleepingEffect").GetComponent<ParticleSystem>();
+
+            // Check if the hero is sleeping.
+            if (listHeroesSleeping.ElementAt(i))
+            {
+                sleepingEffect.Play();
+            }
+            else
+            {
+                sleepingEffect.Stop();
+            }
+            Debug.Log("listHeroesSleeping.ElementAt(i): " + listHeroesSleeping.ElementAt(i));
+        }
     }
 
     // method get a valid position inside the mountain area.

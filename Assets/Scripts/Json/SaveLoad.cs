@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SaveLoad
 {
+    // Save and Load Score
     public static void SaveScore(int currentScore)
     {
         int highestScore = LoadScore();
@@ -16,7 +17,6 @@ public class SaveLoad
             System.IO.File.WriteAllText(Application.dataPath + "/Scripts/Json/HighestScore.json", json);
         }
     }
-
     public static int LoadScore()
     {
         string path = Application.dataPath + "/Scripts/Json/HighestScore.json";
@@ -38,13 +38,30 @@ public class SaveLoad
         return highestScore;
     }
 
+    [System.Serializable]
+    public class DataScore
+    {
+        public int _highestScore;
+
+        public DataScore(int highestScore)
+        {
+            _highestScore = highestScore;
+        }
+    }
+
+    // Save and Load Common Data
+    public static void ClearDataSaveFile()
+    {
+        string json = JsonUtility.ToJson(new DataSave(1, 1, 100, 0, 1000));
+        //save list to json file
+        System.IO.File.WriteAllText(Application.dataPath + "/Scripts/Json/SaveData.json", json);
+    }
     public static void SaveData()
     {
         string json = JsonUtility.ToJson(new DataSave(CommonPropeties.currentRound, CommonPropeties.currentWave, CommonPropeties.healthOfVillage, CommonPropeties.currentScore, CommonPropeties.coin));
         //save list to json file
         System.IO.File.WriteAllText(Application.dataPath + "/Scripts/Json/SaveData.json", json);
     }
-
     public static void LoadData()
     {
         string path = Application.dataPath + "/Scripts/Json/SaveData.json";
@@ -67,26 +84,86 @@ public class SaveLoad
         }
     }
 
+    [System.Serializable]
+    public class DataSave
+    {
+        public int _currentRound;
+        public int _currentWave;
+        public int _healthOfVillage;
+        public int _currentScore;
+        public int _coin;
+
+        public DataSave(int currentRound, int currentWave, int healthOfVillage, int currentScore, int coin)
+        {
+            _currentWave = currentWave;
+            _currentRound = currentRound;
+            _healthOfVillage = healthOfVillage;
+            _currentScore = currentScore;
+            _coin = coin;
+        }
+    }
+    
+    // Save And Load Heroes
+    public static void ClearHeroesSaveFile()
+    {
+        DataHeroes emptyData = new DataHeroes(new List<Vector3>(), new List<bool>());
+        string json = JsonUtility.ToJson(emptyData);
+        System.IO.File.WriteAllText(Application.dataPath + "/Scripts/Json/SaveHeroes.json", json);
+    }
+    public static List<bool> LoadHeroesIsSleeping()
+    {
+        List<bool> heroesIsSleeping = new List<bool>();
+        string path = Application.dataPath + "/Scripts/Json/SaveHeroes.json";
+        // check if file doesn't exist, create it
+        if (!System.IO.File.Exists(path))
+        {
+            string createJson = JsonUtility.ToJson(new DataHeroes(new List<Vector3>(), new List<bool>()));
+            System.IO.File.WriteAllText(path, createJson);
+        }
+        string json = System.IO.File.ReadAllText(Application.dataPath + "/Scripts/Json/SaveHeroes.json");
+        if (json != null)
+        {
+            // convert json to ScoreData
+            DataHeroes dataHeroes = JsonUtility.FromJson<DataHeroes>(json);
+            heroesIsSleeping = dataHeroes._listIsHeroSleeping;
+        }
+        return heroesIsSleeping;
+    }
+    public static List<Vector3> LoadHeroesPosition()
+    {
+        List<Vector3> heroesPosition = new List<Vector3>();
+        string path = Application.dataPath + "/Scripts/Json/SaveHeroes.json";
+        // check if file doesn't exist, create it
+        if (!System.IO.File.Exists(path))
+        {
+            string createJson = JsonUtility.ToJson(new DataHeroes(new List<Vector3>(), new List<bool>()));
+            System.IO.File.WriteAllText(path, createJson);
+        }
+        string json = System.IO.File.ReadAllText(Application.dataPath + "/Scripts/Json/SaveHeroes.json");
+        if (json != null)
+        {
+            // convert json to ScoreData
+            DataHeroes dataHeroes = JsonUtility.FromJson<DataHeroes>(json);
+            heroesPosition = dataHeroes._listHeroes;
+        }
+        return heroesPosition;
+    }
     public static void SaveHeroes()
     {
         // Get all heroes in the scene
         List<GameObject> listCowboys = GameObject.FindGameObjectsWithTag("BodyCowboy").ToList();
-        Debug.Log("listCowboys" + listCowboys.Count);
         List<Vector3> listCowboyVector3 = GetListVector3(listCowboys);
         List<bool> listCowboyIsSleeping = GetListIsSleeping(listCowboys);
 
         List<GameObject> listArchers = GameObject.FindGameObjectsWithTag("BodyArcher").ToList();
-        Debug.Log("listArchers" + listArchers.Count);
         List<Vector3> listArcherVector3 = GetListVector3(listArchers);
         List<bool> listArcherIsSleeping = GetListIsSleeping(listArchers);
 
         List<GameObject> listTanks = GameObject.FindGameObjectsWithTag("BodyTank").ToList();
-        Debug.Log("listTanks" + listTanks.Count);
         List<Vector3> listTankVector3 = GetListVector3(listTanks);
         List<bool> listTankIsSleeping = GetListIsSleeping(listTanks);
 
         List<GameObject> listWizard = GameObject.FindGameObjectsWithTag("BodyWizard").ToList();
-        Debug.Log("listWizard" + listWizard.Count);
         List<Vector3> listWizardVector3 = GetListVector3(listWizard);
         List<bool> listWizardIsSleeping = GetListIsSleeping(listWizard);
 
@@ -132,37 +209,6 @@ public class SaveLoad
         return listIsSleeping;
 
     }
-
-    [System.Serializable]
-    public class DataScore
-    {
-        public int _highestScore;
-
-        public DataScore(int highestScore)
-        {
-            _highestScore = highestScore;
-        }
-    }
-
-    [System.Serializable]
-    public class DataSave
-    {
-        public int _currentRound;
-        public int _currentWave;
-        public int _healthOfVillage;
-        public int _currentScore;
-        public int _coin;
-
-        public DataSave(int currentRound, int currentWave, int healthOfVillage, int currentScore, int coin)
-        {
-            _currentWave = currentWave;
-            _currentRound = currentRound;
-            _healthOfVillage = healthOfVillage;
-            _currentScore = currentScore;
-            _coin = coin;
-        }
-    }
-
     [System.Serializable]
     public class DataHeroes
     {

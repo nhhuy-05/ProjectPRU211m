@@ -13,7 +13,7 @@ public class CommonPropeties
     public static int highestScore { get; set; } = 0; // Highest score
     public static int score { get; set; } = 0; // Score
     public static int currentScore { get; set; } = 0; // Current score
-    public static int currentWave { get; set; } = 3; // Current wave
+    public static int currentWave { get; set; } = 2; // Current wave
     public static int currentRound { get; set; } = 1; // Current round
 
     // Score of each enemy

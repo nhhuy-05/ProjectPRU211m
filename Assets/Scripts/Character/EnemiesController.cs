@@ -182,9 +182,16 @@ public class EnemiesController : MonoBehaviour
                 // load losing scene if village health is 0
                 if (CommonPropeties.healthOfVillage <= 0)
                 {
-                    CommonPropeties.healthOfVillage = 100;
                     CommonPropeties.score = CommonPropeties.currentScore;
+                    // Reset Json file
+                    SaveLoad.ClearDataSaveFile();
+                    SaveLoad.ClearHeroesSaveFile();
+                                       
+                    // Save the score
                     SaveLoad.SaveScore(CommonPropeties.currentScore);
+                    
+                    // Reset some common properties
+                    CommonPropeties.healthOfVillage = 100;
                     CommonPropeties.currentScore = 0;
                     CommonPropeties.currentRound = 1;
                     CommonPropeties.currentWave = 1;
