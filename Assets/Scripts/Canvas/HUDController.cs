@@ -14,14 +14,14 @@ public class HUDController : MonoBehaviour
     {
         _HealthVilage.SetMaxHealth(CommonPropeties.healthOfVillage);
         _coin.text = CommonPropeties.coin.ToString();
-        //_score.text = CommonPropeties.score.ToString();
+        _score.text = CommonPropeties.currentScore.ToString();
         _health.text = CommonPropeties.healthOfVillage.ToString();
     }
     private void Update()
     {
         _coin.text = CommonPropeties.coin.ToString();
         _HealthVilage.SetHealth(CommonPropeties.healthOfVillage);
-        //_score.text = CommonPropeties.score.ToString();
+        _score.text = CommonPropeties.currentScore.ToString();
         _health.text = CommonPropeties.healthOfVillage.ToString();
     }
 }
