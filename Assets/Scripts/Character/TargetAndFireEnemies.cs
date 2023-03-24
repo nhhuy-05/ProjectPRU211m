@@ -48,7 +48,6 @@ public class TargetAndFireEnemies : MonoBehaviour
             if (other.CompareTag("Boss") || other.CompareTag("Eyes") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
             {
                 targetsInRange.Add(other.gameObject);
-                Debug.Log("Add " + other.gameObject.name + " to the list");
             }
         }
         if (gameObject.tag == "BodyTank" || gameObject.tag == "BodyWizard")
@@ -56,7 +55,6 @@ public class TargetAndFireEnemies : MonoBehaviour
             if (other.CompareTag("Boss") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
             {
                 targetsInRange.Add(other.gameObject);
-                Debug.Log("Add " + other.gameObject.name + " to the list");
             }
         }
 
@@ -69,7 +67,6 @@ public class TargetAndFireEnemies : MonoBehaviour
             if (other.CompareTag("Boss") || other.CompareTag("Eyes") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
             {
                 targetsInRange.Remove(other.gameObject);
-                Debug.Log("Remove " + other.gameObject.name + " from the list");
             }
         }
         if (gameObject.tag == "BodyTank" || gameObject.tag == "BodyWizard")
@@ -77,7 +74,6 @@ public class TargetAndFireEnemies : MonoBehaviour
             if (other.CompareTag("Boss") || other.CompareTag("Goblin") || other.CompareTag("Mushroom") || other.CompareTag("Skeleton"))
             {
                 targetsInRange.Remove(other.gameObject);
-                Debug.Log("Remove " + other.gameObject.name + " from the list");
             }
         }
     }

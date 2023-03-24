@@ -108,7 +108,7 @@ public class EnemiesController : MonoBehaviour
                 CommonPropeties.currentScore += CommonPropeties.scoreOfGoblin;
 
             }
-            if (gameObject.tag == "MushRoom")
+            if (gameObject.tag == "Mushroom")
             {
                 CommonPropeties.coin += CommonPropeties.coinOfMushroom;
                 CommonPropeties.currentScore += CommonPropeties.scoreOfMushroom;
@@ -171,7 +171,7 @@ public class EnemiesController : MonoBehaviour
                 {
                     CommonPropeties.healthOfVillage -= CommonPropeties.damageOfGoblin;
                 }
-                if (gameObject.tag == "MushRoom")
+                if (gameObject.tag == "Mushroom")
                 {
                     CommonPropeties.healthOfVillage -= CommonPropeties.damageOfMushroom;
                 }
