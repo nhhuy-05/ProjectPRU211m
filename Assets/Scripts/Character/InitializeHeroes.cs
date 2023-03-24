@@ -32,9 +32,7 @@ public class InitializeHeroes : MonoBehaviour
     {
         // Get list from json
         listHeroesPositon = SaveLoad.LoadHeroesPosition();
-        Debug.Log("listHeroesPositon.Count: " + listHeroesPositon.Count);
         listHeroesSleeping = SaveLoad.LoadHeroesIsSleeping();
-        Debug.Log("listHeroesSleeping.Count: " + listHeroesSleeping.Count);
 
         // Get the tilemap that represents the mountain area.
         mountainTilemap = GameObject.Find("Mountain").GetComponent<Tilemap>();
@@ -93,7 +91,6 @@ public class InitializeHeroes : MonoBehaviour
             {
                 sleepingEffect.Stop();
             }
-            Debug.Log("listHeroesSleeping.ElementAt(i): " + listHeroesSleeping.ElementAt(i));
         }
     }
 

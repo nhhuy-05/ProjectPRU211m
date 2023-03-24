@@ -53,7 +53,7 @@ public class PauseMenu : MonoBehaviour
     }
     void SaveAndQuit()
     {
-        //Application.Quit();
+        Application.Quit();
     }
     public void GoToMainMenu()
     {

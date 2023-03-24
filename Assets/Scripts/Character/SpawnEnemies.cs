@@ -53,6 +53,10 @@ public class SpawnEnemies : MonoBehaviour
     void Start()
     {
         // Load Data
+        if (CommonPropeties.currentRound == 0)
+        {
+            SaveLoad.ClearDataSaveFile();
+        }
         SaveLoad.LoadData();
         // Use a coroutine to display the TextMesh of Round, then Wave, and then wait for 5s before starting the enemy spawning
         StartCoroutine(DisplayTextAfterDelay());
@@ -84,7 +88,7 @@ public class SpawnEnemies : MonoBehaviour
         if (isSpawnStart)
         {
             eslapsedTime += Time.deltaTime;
-            if (eslapsedTime >= 0.1)
+            if (eslapsedTime >= timeSpawn)
             {
                 spawnEnemy();
                 spawnController();  // run if all enemies're destroyed
@@ -249,7 +253,6 @@ public class SpawnEnemies : MonoBehaviour
         GameObject prefabToSpawn = spawnRandomPrefab(); // Spawn 1 enemy
         if (prefabToSpawn != null && _enemiesSpawned < enemiesTotalWave)
             _enemiesSpawned++;
-        Debug.Log("Spawned: " + _enemiesSpawned);
     }
 
     // check if all enemies're destroyed
@@ -261,7 +264,6 @@ public class SpawnEnemies : MonoBehaviour
         foreach (var item in GameObject.FindGameObjectsWithTag("Boss"))
         {
             enemies.Add(item);
-            Debug.Log("Boss");
         }
 
         // Add Eyes

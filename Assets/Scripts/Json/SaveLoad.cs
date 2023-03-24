@@ -12,30 +12,12 @@ public class SaveLoad
         int highestScore = LoadScore();
         if (currentScore >= highestScore)
         {
-            string json = JsonUtility.ToJson(new DataScore(currentScore));
-            //save list to json file
-            System.IO.File.WriteAllText(Application.dataPath + "/Scripts/Json/HighestScore.json", json);
+            PlayerPrefs.SetInt("HighestScore", currentScore);
         }
     }
     public static int LoadScore()
     {
-        string path = Application.dataPath + "/Scripts/Json/HighestScore.json";
-        // check if file doesn't exist, create it
-        if (!System.IO.File.Exists(path))
-        {
-            string createJson = JsonUtility.ToJson(new DataScore(0));
-            System.IO.File.WriteAllText(path, createJson);
-        }
-        string json = System.IO.File.ReadAllText(Application.dataPath + "/Scripts/Json/HighestScore.json");
-        int highestScore = 0;
-        if (json != null)
-        {
-            // convert json to ScoreData
-            DataScore scoreData = JsonUtility.FromJson<DataScore>(json);
-            highestScore = scoreData._highestScore;
-        }
-
-        return highestScore;
+        return PlayerPrefs.GetInt("HighestScore");
     }
 
     [System.Serializable]
@@ -52,36 +34,33 @@ public class SaveLoad
     // Save and Load Common Data
     public static void ClearDataSaveFile()
     {
-        string json = JsonUtility.ToJson(new DataSave(1, 1, 100, 0, 1000));
-        //save list to json file
-        System.IO.File.WriteAllText(Application.dataPath + "/Scripts/Json/SaveData.json", json);
+        DataSave data = new DataSave(1, 1, 100, 0, 500);
+        PlayerPrefs.SetInt("CurrentRound", data._currentRound);
+        PlayerPrefs.SetInt("CurrentWave", data._currentWave);
+        PlayerPrefs.SetInt("HealthOfVillage", data._healthOfVillage);
+        PlayerPrefs.SetInt("CurrentScore", data._currentScore);
+        PlayerPrefs.SetInt("Coin", data._coin);
     }
     public static void SaveData()
     {
-        string json = JsonUtility.ToJson(new DataSave(CommonPropeties.currentRound, CommonPropeties.currentWave, CommonPropeties.healthOfVillage, CommonPropeties.currentScore, CommonPropeties.coin));
-        //save list to json file
-        System.IO.File.WriteAllText(Application.dataPath + "/Scripts/Json/SaveData.json", json);
+        DataSave data = new DataSave(CommonPropeties.currentRound, CommonPropeties.currentWave, CommonPropeties.healthOfVillage, CommonPropeties.currentScore, CommonPropeties.coin);
+        PlayerPrefs.SetInt("CurrentRound", data._currentRound);
+        PlayerPrefs.SetInt("CurrentWave", data._currentWave);
+        PlayerPrefs.SetInt("HealthOfVillage", data._healthOfVillage);
+        PlayerPrefs.SetInt("CurrentScore", data._currentScore);
+        PlayerPrefs.SetInt("Coin", data._coin);
     }
     public static void LoadData()
     {
-        string path = Application.dataPath + "/Scripts/Json/SaveData.json";
-        // check if file doesn't exist, create it
-        if (!System.IO.File.Exists(path))
+        if (PlayerPrefs.GetInt("CurrentRound")==0)
         {
-            string createJson = JsonUtility.ToJson(new DataSave(1, 1, 100, 0, 1000));
-            System.IO.File.WriteAllText(path, createJson);
+            ClearDataSaveFile();
         }
-        string json = System.IO.File.ReadAllText(Application.dataPath + "/Scripts/Json/SaveData.json");
-        if (json != null)
-        {
-            // convert json to ScoreData
-            DataSave data = JsonUtility.FromJson<DataSave>(json);
-            CommonPropeties.currentRound = data._currentRound;
-            CommonPropeties.currentWave = data._currentWave;
-            CommonPropeties.healthOfVillage = data._healthOfVillage;
-            CommonPropeties.currentScore = data._currentScore;
-            CommonPropeties.coin = data._coin;
-        }
+        CommonPropeties.currentRound = PlayerPrefs.GetInt("CurrentRound");
+        CommonPropeties.currentWave = PlayerPrefs.GetInt("CurrentWave");
+        CommonPropeties.healthOfVillage = PlayerPrefs.GetInt("HealthOfVillage");
+        CommonPropeties.currentScore = PlayerPrefs.GetInt("CurrentScore");
+        CommonPropeties.coin = PlayerPrefs.GetInt("Coin");
     }
 
     [System.Serializable]
@@ -102,51 +81,33 @@ public class SaveLoad
             _coin = coin;
         }
     }
-    
+
     // Save And Load Heroes
     public static void ClearHeroesSaveFile()
     {
-        DataHeroes emptyData = new DataHeroes(new List<Vector3>(), new List<bool>());
-        string json = JsonUtility.ToJson(emptyData);
-        System.IO.File.WriteAllText(Application.dataPath + "/Scripts/Json/SaveHeroes.json", json);
+        string json = JsonUtility.ToJson(new DataHeroes(new List<Vector3>(), new List<bool>()));
+        PlayerPrefs.SetString("HeroesData", json);
     }
     public static List<bool> LoadHeroesIsSleeping()
     {
-        List<bool> heroesIsSleeping = new List<bool>();
-        string path = Application.dataPath + "/Scripts/Json/SaveHeroes.json";
-        // check if file doesn't exist, create it
-        if (!System.IO.File.Exists(path))
+        string json = PlayerPrefs.GetString("HeroesData");
+        if (json == "")
         {
-            string createJson = JsonUtility.ToJson(new DataHeroes(new List<Vector3>(), new List<bool>()));
-            System.IO.File.WriteAllText(path, createJson);
+            ClearHeroesSaveFile();
         }
-        string json = System.IO.File.ReadAllText(Application.dataPath + "/Scripts/Json/SaveHeroes.json");
-        if (json != null)
-        {
-            // convert json to ScoreData
-            DataHeroes dataHeroes = JsonUtility.FromJson<DataHeroes>(json);
-            heroesIsSleeping = dataHeroes._listIsHeroSleeping;
-        }
-        return heroesIsSleeping;
+        DataHeroes data = JsonUtility.FromJson<DataHeroes>(json);
+        return data._listIsHeroSleeping;
     }
     public static List<Vector3> LoadHeroesPosition()
     {
-        List<Vector3> heroesPosition = new List<Vector3>();
-        string path = Application.dataPath + "/Scripts/Json/SaveHeroes.json";
-        // check if file doesn't exist, create it
-        if (!System.IO.File.Exists(path))
+        List<Vector3> list = new List<Vector3>();
+        string json = PlayerPrefs.GetString("HeroesData");
+        if (json == "")
         {
-            string createJson = JsonUtility.ToJson(new DataHeroes(new List<Vector3>(), new List<bool>()));
-            System.IO.File.WriteAllText(path, createJson);
+            ClearHeroesSaveFile();
         }
-        string json = System.IO.File.ReadAllText(Application.dataPath + "/Scripts/Json/SaveHeroes.json");
-        if (json != null)
-        {
-            // convert json to ScoreData
-            DataHeroes dataHeroes = JsonUtility.FromJson<DataHeroes>(json);
-            heroesPosition = dataHeroes._listHeroes;
-        }
-        return heroesPosition;
+        DataHeroes data = JsonUtility.FromJson<DataHeroes>(json);
+        return data._listHeroes;
     }
     public static void SaveHeroes()
     {
@@ -179,9 +140,9 @@ public class SaveLoad
         allIsSleeping.AddRange(listTankIsSleeping);
         allIsSleeping.AddRange(listWizardIsSleeping);
 
-        // Save to json file
-        string json = JsonUtility.ToJson(new DataHeroes(allHeroesPositions, allIsSleeping));
-        System.IO.File.WriteAllText(Application.dataPath + "/Scripts/Json/SaveHeroes.json", json);
+        DataHeroes data = new DataHeroes(allHeroesPositions, allIsSleeping);
+        string json = JsonUtility.ToJson(data);
+        PlayerPrefs.SetString("HeroesData", json);
     }
     public static List<Vector3> GetListVector3(List<GameObject> lists)
     {
